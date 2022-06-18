@@ -1,4 +1,4 @@
-# criminal_pets_list
+# criminal_pets
 
 ## サービス概要
 いたずら盛りのペットの悪行を経験している飼い主が  
