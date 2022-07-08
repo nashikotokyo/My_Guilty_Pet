@@ -31,7 +31,12 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 
+# アプリ名の変更の為
 gem 'rename'
+
+gem 'slim-rails'
+gem 'html2slim'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
