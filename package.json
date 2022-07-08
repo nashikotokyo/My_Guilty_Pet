@@ -1,5 +1,5 @@
 {
-  "name": "criminal-pets",
+  "name":"my_guilty_pet",
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.0.0",
