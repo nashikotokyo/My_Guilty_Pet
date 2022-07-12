@@ -41,5 +41,8 @@ module MyGuiltyPet
       g.test_framework false  # testファイル生成せず
       g.skip_routes true  # trueならroutes.rb変更せず、falseなら通常通り変更
     end
+
+    config.time_zone = "Tokyo"
+    config.active_record.default_timezone = :local
   end
 end
