@@ -1,4 +1,4 @@
-# criminal_pets
+# My_Guilty_Pet
 
 ## サービス概要
 いたずら盛りのペットの悪行を経験している飼い主が  
