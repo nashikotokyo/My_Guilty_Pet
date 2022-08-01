@@ -11,17 +11,15 @@
     <!-- Container START -->
     <div class="container">
       <!-- Row START -->
-      <div class="row text-center position-relative z-index-1">
-      <div class="col-lg-7 mx-auto">
+      <div class="row position-relative z-index-1">
         <div class="d-flex justify-content-center">
-          <div class="mt-2 mt-sm-0 mx-2">
-            <%= link_to "使い方", href="#", class: "btn btn-warning btn-sm" %>
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "使い方", { anchor: "how-to-use" }, class: "btn btn-warning" %>
           </div>
-          <div class="mt-2 mt-sm-0 mx-2">
-            <%= link_to "ログイン", href="#", class: "btn btn-warning btn-sm" %>
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "ログイン", href="#", class: "btn btn-warning" %>
           </div>
         </div>
-      </div>
       </div>
       <!-- Row END -->
       <!-- Row START -->
@@ -53,7 +51,7 @@
     <div class="container">
       <!-- Title START -->
       <div class="row text-center position-relative z-index-1">
-        <div class="col-lg-7 mx-auto mt-4 mt-sm-6">
+        <div class="col-lg-7 mx-auto mt-4 mt-sm-6", id="how-to-use">
           <u><h2 class="h1">How to Use</h2></u>
         </div>
       </div>
@@ -130,6 +128,18 @@
         </div>
       </div>
       <!-- STEP4 END -->
+      <!-- Button START -->
+      <div class="row my-5 my-sm-7">
+        <div class="d-flex justify-content-center">
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "投稿一覧", { anchor: "how-to-use" }, class: "btn btn-warning" %>
+          </div>
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "ログイン", href="#", class: "btn btn-warning" %>
+          </div>
+        </div>
+      </div>
+      <!-- Button END -->
     </div>
     <!-- Container END -->
   </section>
