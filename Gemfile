@@ -34,8 +34,6 @@ gem 'net-pop'
 # アプリ名の変更の為
 gem 'rename'
 
-gem 'slim-rails'
-gem 'html2slim'
 gem 'redis-rails'
 gem 'annotate'
 gem 'rails-i18n'

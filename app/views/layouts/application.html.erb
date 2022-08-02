@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyGuiltyPet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+
+	  <!-- Google Font -->
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+	  <!-- Plugins CSS -->
+	  <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+
+  	<!-- Theme CSS -->
+	  <link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  </head>
+
+  <body>
+    <%= render "shared/before_login_header" %>
+    <main>
+      <%= yield %>
+    </main>
+    <%= render "shared/footer" %>
+
+    <!-- =======================
+    JS libraries, plugins and custom scripts -->
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vendors -->
+    <script src="assets/vendor/plyr/plyr.js"></script>
+
+    <!-- Template Functions -->
+    <script src="assets/js/functions.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!-- =======================
+Header START -->
+
+<header class="navbar-light header-static bg-mode sticky-top">
+  <!-- Navbar START -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <div class="container">
+      <!-- App name START -->
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <h3 class="h2">MyGuiltyPet</h3>
+      <% end %>
+      <!-- App name END -->
+      <!-- Responsive navbar toggler -->
+          <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+      <!-- Main navbar START -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav navbar-nav-scroll me-auto">
+          <!-- Nav item -->
+          <li class="nav-item">
+            <%= link_to "ログイン", href="#", class: "nav-link"  %>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <%= link_to "投稿一覧", href="#", class: "nav-link"  %>
+          </li>
+          <!-- Dark mode switch START -->
+          <li class="nav-item">
+            <div class="modeswitch-wrap nav-link" id="darkModeSwitch">
+              <h7>ダークモード</h7>
+              <div class="modeswitch-item">
+                <div class="modeswitch-icon"></div>
+              </div>
+            </div>
+          </li>
+          <!-- Dark mode switch END -->
+        </ul>
+      </div>
+      <!-- Main navbar END -->
+  </nav>
+  <!-- Navbar END -->
+</header>
+
+<!-- =======================
+Header END -->
