@@ -38,6 +38,7 @@ gem 'redis-rails'
 gem 'annotate'
 gem 'rails-i18n'
 gem 'sorcery'
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
