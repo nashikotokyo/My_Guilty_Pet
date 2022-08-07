@@ -1,0 +1,4 @@
+twitter:
+  access_key: <%= Rails.application.credentials.twitter[:access_key] %>
+  secret_key: <%= Rails.application.credentials.twitter[:secret_key] %>
+  callback_url: http://localhost:3000/oauth/twitter/callback
