@@ -58,10 +58,10 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'pry-byebug'  
+  gem 'pry-byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

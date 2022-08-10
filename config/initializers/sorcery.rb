@@ -80,7 +80,7 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  config.external_providers = [:twitter, :line, :google]
+  config.external_providers = %i[twitter line google]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -119,7 +119,7 @@ Rails.application.config.sorcery.configure do |config|
   config.twitter.secret = Settings.twitter.secret_key
   config.twitter.callback_url = Settings.twitter.callback_url
   config.twitter.user_info_mapping = {
-    username: "screen_name"
+    username: 'screen_name'
   }
 
   # config.facebook.key = ""
@@ -164,9 +164,9 @@ Rails.application.config.sorcery.configure do |config|
   config.google.secret = Settings.google.secret_key
   config.google.callback_url = Settings.google.callback_url
   config.google.user_info_mapping = {
-    username: "name"
+    username: 'name'
   }
-  config.google.scope = "https://www.googleapis.com/auth/userinfo.profile"
+  config.google.scope = 'https://www.googleapis.com/auth/userinfo.profile'
 
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
   # The callback URL "can't contain a query string or invalid special characters"
@@ -226,13 +226,12 @@ Rails.application.config.sorcery.configure do |config|
   config.line.key = Settings.line.access_key
   config.line.secret = Settings.line.secret_key
   config.line.callback_url = Settings.line.callback_url
-  config.line.scope = "profile"
+  config.line.scope = 'profile'
   # config.line.bot_prompt = "normal"
   config.line.user_info_mapping = {
     username: 'displayName'
   }
 
-  
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
   # config.discord.key = "xxxxxx"
@@ -569,5 +568,5 @@ Rails.application.config.sorcery.configure do |config|
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = "User"
+  config.user_class = 'User'
 end
