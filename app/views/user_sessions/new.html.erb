@@ -22,6 +22,12 @@
               LINEでログイン
             </div>
           <% end %>
+          <%= link_to auth_at_provider_path(provider: :google), class: 'btn btn-danger d-flex align-items-center justify-content-center p-3 m-2' do %>
+            <i class="fa-brands fa-google fa-2x"></i>
+            <div class="flex-grow-1">
+              Googleでログイン
+            </div>
+          <% end %>
         </div>
       </div>
       <!-- Sign up END -->
