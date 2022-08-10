@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'oauth/:provider/callback', to: 'oauths#callback' # for use with Github, Facebook
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   get 'login', to: 'user_sessions#new'
+  delete 'logout', to: 'user_sessions#destroy'
 end
