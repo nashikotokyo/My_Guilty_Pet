@@ -5,7 +5,7 @@ jobs: # 一連のステップ
   build: # ワークフローを使用しない実行では、エントリポイントとして `build` ジョブが必要です
     parallelism: 1 # 何個並列でCIを走らせるか。無料版だと1しか無理。
     docker: # Docker でステップを実行します
-      - image: cimg/ruby:3.1.2 # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
+      - image: circleci/ruby:2.6.4-node-browsers # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
         environment: # プライマリ コンテナの環境変数
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -15,7 +15,7 @@ jobs: # 一連のステップ
       - image: redis:latest
       - image: circleci/mysql:5.7 # データベース イメージ
         environment: # データベースの環境変数
-          MYSQL_DB: my_guilty_pet_test
+          MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps: # 実行可能コマンドの集合
       - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
