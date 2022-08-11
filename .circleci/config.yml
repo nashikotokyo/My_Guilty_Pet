@@ -3,7 +3,7 @@ version: 2.1
 
 jobs: # 一連のステップ
   build: # ワークフローを使用しない実行では、エントリポイントとして `build` ジョブが必要です
-  parallelism: 1 # 何個並列でCIを走らせるか。無料版だと1しか無理。
+    parallelism: 1 # 何個並列でCIを走らせるか。無料版だと1しか無理。
     docker: # Docker でステップを実行します
       - image: cimg/ruby:2.6-node # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
         environment: # プライマリ コンテナの環境変数
@@ -21,59 +21,59 @@ jobs: # 一連のステップ
       # Bundler のバージョンを指定します
 
       - run:
-        name: setup bundler
-        command: |
-          gem install bundler:2.0.2
-          bundle -v
-        # バンドル キャッシュを復元します
-        # 依存関係キャッシュについては https://circleci.com/ja/docs/2.0/caching/ をお読みください
+          name: setup bundler
+          command: |
+            gem install bundler:2.0.2
+            bundle -v
+          # バンドル キャッシュを復元します
+          # 依存関係キャッシュについては https://circleci.com/ja/docs/2.0/caching/ をお読みください
 
       - restore_cache:
-        keys:
-          - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-          - rails-demo-bundle-v2-
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
 
       - run: # Ruby の依存関係をインストールします
-        name: bundle install
-        command: bundle check --path vendor/bundle || bundle install --deployment
+          name: bundle install
+          command: bundle check --path vendor/bundle || bundle install --deployment
 
       # Ruby の依存関係のバンドル キャッシュを保存します
 
       - save_cache:
-        key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
       # アプリケーションで Webpacker または Yarn を他の何らかの方法で使用する場合にのみ必要です
 
       - restore_cache:
-        keys:
-          - rails-demo-yarn-{{ checksum "yarn.lock" }}
-          - rails-demo-yarn-
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
 
       - run:
-        name: yarn install
-        command: yarn install --cache-folder ~/.cache/yarn
+          name: yarn install
+          command: yarn install --cache-folder ~/.cache/yarn
 
       # Yarn または Webpacker のキャッシュを保存します
 
       - save_cache:
-        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.cache/yarn
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       - run:
-        name: wait database
-        command: dockerize -wait tcp://localhost:3306 -timeout 1m
+          name: wait database
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
       - run:
-        name: setup database.yml
-        command: cp config/database.ci.yml config/database.yml
+          name: setup database.yml
+          command: cp config/database.ci.yml config/database.yml
 
       - run:
-        name: setup database
-        command: bin/rails db:schema:load --trace
+          name: setup database
+          command: bin/rails db:schema:load --trace
 
       - run:
-        name: Rubocop
-        command: bundle exec rubocop
+          name: Rubocop
+          command: bundle exec rubocop
