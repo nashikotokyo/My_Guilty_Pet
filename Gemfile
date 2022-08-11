@@ -37,6 +37,8 @@ gem 'rename'
 gem 'redis-rails'
 gem 'annotate'
 gem 'rails-i18n'
+gem 'sorcery'
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,10 +58,10 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
 
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'pry-byebug'  
+  gem 'pry-byebug'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
