@@ -13,9 +13,10 @@ jobs: # 一連のステップ
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
       - image: redis:latest
-      - image: circleci/mysql:5.7 # データベース イメージ
+      - image: cimg/mysql:8.0 # データベース イメージ
         environment: # データベースの環境変数
-          MYSQL_DB: my_guilty_pet_test
+          MYSQL_USER: root
+          MYSQL_DB: circle_test
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps: # 実行可能コマンドの集合
       - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
@@ -25,10 +26,6 @@ jobs: # 一連のステップ
       - run:
           name: setup bundler
           command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
             gem install bundler:2.3.7
             bundle -v
           # バンドル キャッシュを復元します
