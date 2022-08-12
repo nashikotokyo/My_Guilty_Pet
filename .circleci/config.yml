@@ -21,7 +21,6 @@ jobs: # 一連のステップ
       - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
 
       # Bundler のバージョンを指定します
-
       - run:
           name: setup bundler
           command: |
@@ -35,19 +34,18 @@ jobs: # 一連のステップ
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
             - rails-demo-bundle-v2-
 
-      - run: # Ruby の依存関係をインストールします
+      # Ruby の依存関係をインストールします
+      - run: 
           name: bundle install
           command: bundle check --path vendor/bundle || bundle install --deployment
 
       # Ruby の依存関係のバンドル キャッシュを保存します
-
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
       # アプリケーションで Webpacker または Yarn を他の何らかの方法で使用する場合にのみ必要です
-
       - restore_cache:
           keys:
             - rails-demo-yarn-{{ checksum "yarn.lock" }}
@@ -58,7 +56,6 @@ jobs: # 一連のステップ
           command: yarn install --cache-folder ~/.cache/yarn
 
       # Yarn または Webpacker のキャッシュを保存します
-
       - save_cache:
           key: rails-demo-yarn-{{ checksum "yarn.lock" }}
           paths:
