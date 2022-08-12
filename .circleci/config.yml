@@ -1,0 +1,78 @@
+# 最新のCircleCI 2.1 を使用します
+version: 2.1
+
+jobs: # 一連のステップ
+  build: # ワークフローを使用しない実行では、エントリポイントとして `build` ジョブが必要です
+    parallelism: 1 # 何個並列でCIを走らせるか。無料版だと1しか無理。
+    docker: # Docker でステップを実行します
+      - image: cimg/ruby:3.1-node # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
+        environment: # プライマリ コンテナの環境変数
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+      - image: redis:latest
+      - image: cimg/mysql:8.0 # データベース イメージ
+        environment: # データベースの環境変数
+          MYSQL_DB: circle_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    steps: # 実行可能コマンドの集合
+      - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
+
+      # Bundler のバージョンを指定します
+      - run:
+          name: setup bundler
+          command: |
+            gem install bundler:2.3.7
+            bundle -v
+          # バンドル キャッシュを復元します
+          # 依存関係キャッシュについては https://circleci.com/ja/docs/2.0/caching/ をお読みください
+
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+
+      # Ruby の依存関係をインストールします
+      - run: 
+          name: bundle install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+
+      # Ruby の依存関係のバンドル キャッシュを保存します
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # アプリケーションで Webpacker または Yarn を他の何らかの方法で使用する場合にのみ必要です
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: yarn install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Yarn または Webpacker のキャッシュを保存します
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: wait database
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - run:
+          name: setup database.yml
+          command: cp config/database.ci.yml config/database.yml
+
+      - run:
+          name: setup database
+          command: bin/rails db:schema:load --trace
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
