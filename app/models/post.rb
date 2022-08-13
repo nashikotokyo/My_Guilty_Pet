@@ -19,6 +19,7 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
+  mount_uploader :image, PostImageUploader
 
   validates :image, presence: true
   validates :body, length: {maximum: 1000}
