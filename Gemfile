@@ -40,6 +40,7 @@ gem 'rails-i18n'
 gem 'sorcery'
 gem 'config'
 gem 'carrierwave'
+gem "mini_magick"
 
 
 group :development, :test do
