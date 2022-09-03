@@ -2,7 +2,7 @@
   <div>
 	  <div class="thumb-example">
       <!-- swiper1 -->
-  	  <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop">
+  	  <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
 	      <swiper-slide v-for="template in templates" >
 		      <img :src="template.img">
 	      </swiper-slide>
@@ -32,6 +32,7 @@
     },
     data: function () {
       return {
+				selectedSlide: 0,
         templates: [
 					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
 					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
@@ -62,7 +63,12 @@
 		  	swiperTop.controller.control = swiperThumbs
 		  	swiperThumbs.controller.control = swiperTop
 		  })
-    }
+    },
+		methods:{
+			getActiveSlide(){
+				this.selectedSlide = this.$refs.swiperTop.$swiper.realIndex
+			}
+		}
 	}
 </script>
 
