@@ -1,24 +1,36 @@
 <template>
-  <div>
-	  <div class="thumb-example">
-      <!-- swiper1 -->
-  	  <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
-	      <swiper-slide v-for="template in templates" >
-		      <img :src="template.img">
-	      </swiper-slide>
-	      <div class="swiper-pagination"  slot="pagination"></div>
-  	  </swiper>
-  	  <!-- swiper2 Thumbs -->
-	    <swiper class="swiper gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
-	      <swiper-slide v-for="template in templates">
-		      <img :src="template.img">
-    	  </swiper-slide>
-    	</swiper>
-    </div>
-		<div class="text-end">
-	    <input type="button" value="選択する" class="btn btn-warning mt-3">
+	<!-- Templates Slider Start -->
+  <div class="card rounded-3 my-5">
+	  <!-- Title -->
+	  <div class="card-header text-center">
+		  <h3>テンプレートの選択</h3>
 	  </div>
-  </div>
+	  <!-- Body -->
+	  <div class="card-body d-flex flex-column justify-content-center">
+		  <!-- Template Slider-->
+	    <div>
+	      <div class="thumb-example">
+          <!-- swiper1 -->
+  	      <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
+	          <swiper-slide v-for="template in templates" >
+		          <img :src="template.img">
+    	      </swiper-slide>
+	          <div class="swiper-pagination"  slot="pagination"></div>
+  	      </swiper>
+        	<!-- swiper2 Thumbs -->
+          <swiper class="swiper gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
+	          <swiper-slide v-for="template in templates">
+		          <img :src="template.img">
+	          </swiper-slide>
+          </swiper>
+        </div>
+        <div class="text-end">
+          <input type="button" value="選択する" class="btn btn-warning mt-3">
+        </div>
+      </div>
+  	</div>
+	</div>
+	<!-- Templates Slider End -->
 </template>
 
 <script>

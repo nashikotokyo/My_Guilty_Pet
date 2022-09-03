@@ -13,4 +13,4 @@ const imagePath = name => images(name, true);
 Rails.start()
 ActiveStorage.start()
 
-import '../javascripts/template-slider'
+import '../javascripts/new-post-page'
