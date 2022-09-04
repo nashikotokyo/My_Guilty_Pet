@@ -1,22 +1,22 @@
 <template>
-	<!-- Templates Slider Start -->
-  <div class="card rounded-3 my-5">
-	  <!-- Title -->
-	  <div class="card-header text-center">
-		  <h3>テンプレートの選択</h3>
-	  </div>
-	  <!-- Body -->
-	  <div class="card-body d-flex flex-column justify-content-center">
-		  <!-- Template Slider-->
-	    <div>
+	<div>
+	  <!-- Templates Slider Start -->
+    <div class="card rounded-3 my-5">
+	    <!-- Title -->
+	    <div class="card-header text-center">
+		    <h3>テンプレートの選択</h3>
+	    </div>
+	    <!-- Body -->
+	    <div class="card-body d-flex flex-column justify-content-center">
+		    <!-- Template Slider-->
 	      <div class="thumb-example">
           <!-- swiper1 -->
-  	      <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
+    	    <swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
 	          <swiper-slide v-for="template in templates" >
 		          <img :src="template.img">
-    	      </swiper-slide>
-	          <div class="swiper-pagination"  slot="pagination"></div>
-  	      </swiper>
+  	        </swiper-slide>
+            <div class="swiper-pagination"  slot="pagination"></div>
+					</swiper>
         	<!-- swiper2 Thumbs -->
           <swiper class="swiper gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
 	          <swiper-slide v-for="template in templates">
@@ -27,10 +27,28 @@
         <div class="text-end">
           <input type="button" value="選択する" class="btn btn-warning mt-3">
         </div>
-      </div>
+    	</div>
   	</div>
-	</div>
-	<!-- Templates Slider End -->
+	  <!-- Templates Slider End -->
+	  <!-- Select Pet Image Start -->
+    <div class="card rounded-3 my-5">
+	    <!-- Title -->
+	    <div class="card-header text-center">
+		    <h3>ペットの画像を選択</h3>
+	    </div>
+	    <!-- Body -->
+	    <div class="card-body d-flex flex-column justify-content-center">
+				<input class="form-control" type="file" ref="uploadedFile" @change="getFileUrl">
+        <div v-if="uploadedFileUrl">
+					<img class="pt-3" :src="uploadedFileUrl">
+					<div class="text-end">
+            <input type="button" value="選択する" class="btn btn-warning mt-3">
+          </div>
+				</div> 
+    	</div>
+  	</div>
+	  <!-- Select Pet Image End -->
+  </div>
 </template>
 
 <script>
@@ -45,6 +63,7 @@
     data: function () {
       return {
 				selectedSlide: 0,
+				uploadedFileUrl: '',
         templates: [
 					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
 					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
@@ -79,7 +98,11 @@
 		methods:{
 			getActiveSlide(){
 				this.selectedSlide = this.$refs.swiperTop.$swiper.realIndex
-			}
+			},
+			getFileUrl(){
+				const uploadedFile = this.$refs.uploadedFile.files[0] 
+        this.uploadedFileUrl = URL.createObjectURL(uploadedFile)
+      }
 		}
 	}
 </script>
