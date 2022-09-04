@@ -48,6 +48,19 @@
     	</div>
   	</div>
 	  <!-- Select Pet Image End -->
+		<!-- Trimming Start -->
+		<div class="card rounded-3 my-5">
+	    <!-- Title -->
+	    <div class="card-header text-center">
+		    <h3>トリミング</h3>
+	    </div>
+	    <!-- Body -->
+	    <div class="card-body d-flex flex-column justify-content-center">
+			 
+    	</div>
+    </div>
+	  <!-- Trimming End -->
+
   </div>
 </template>
 
