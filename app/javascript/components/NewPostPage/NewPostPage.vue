@@ -25,7 +25,7 @@
           </swiper>
         </div>
         <div class="text-end">
-          <input type="button" value="選択する" class="btn btn-warning mt-3">
+          <input type="button" value="選択する" class="btn btn-warning mt-3" @click="showTemplate">
         </div>
     	</div>
   	</div>
@@ -48,30 +48,45 @@
     	</div>
   	</div>
 	  <!-- Select Pet Image End -->
-		<!-- Trimming Start -->
+		<!-- Crop Image and Combine Start -->
 		<div class="card rounded-3 my-5">
 	    <!-- Title -->
 	    <div class="card-header text-center">
-		    <h3>トリミング</h3>
+		    <h3>ペットの画像を選択・トリミング</h3>
 	    </div>
 	    <!-- Body -->
 	    <div class="card-body d-flex flex-column justify-content-center">
-			 
+				<label for="pet_image">ペットの画像を選択</label>
+				<input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
+				<div v-show="imgSrc" class="mt-3">
+          <vue-cropper
+						ref="cropper"
+						:src="imgSrc"
+						:auto-crop-area="0.5"
+						:aspect-ratio="1 / 1"
+						/>
+						<div class="text-end">
+              <button class="btn btn-warning mt-3" @click.prevent="combineCroppedImg">トリミングして合成</button>
+						</div>
+				</div>
+				<canvas id="canvas" width="1200" height="630" class="mt-3"></canvas>
     	</div>
     </div>
-	  <!-- Trimming End -->
-
+	  <!-- Crop Image and Combine End -->
   </div>
 </template>
 
 <script>
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
+	import VueCropper from 'vue-cropperjs';
+  import 'cropperjs/dist/cropper.css';
 
 	export default {
 		components: {
       Swiper,
-      SwiperSlide
+      SwiperSlide,
+			VueCropper
     },
     data: function () {
       return {
@@ -97,7 +112,9 @@
 	    		slidesPerView: 3,
 					touchRatio: 0.2,
 	    		slideToClickedSlide: true
-	    	}
+	    	},
+				imgSrc: '',
+        cropImg: '',
       }
     },
 		mounted() {
@@ -115,7 +132,47 @@
 			getFileUrl(){
 				const uploadedFile = this.$refs.uploadedFile.files[0] 
         this.uploadedFileUrl = URL.createObjectURL(uploadedFile)
-      }
+      },
+			setImage (e) {
+				const file = e.target.files[0]
+				if (!file.type.includes('image/')) {
+					alert('画像ファイルを選択して下さい')
+					return
+				}
+				if (typeof FileReader === 'function') {
+					const reader = new FileReader();
+          reader.onload = (event) => {
+						this.imgSrc = event.target.result;
+						// rebuild cropperjs with the updated source
+          	this.$refs.cropper.replace(event.target.result);
+          };
+          reader.readAsDataURL(file);
+				} else {
+					alert('Sorry, FileReader API not supported');
+				}
+			},
+			combineCroppedImg() {
+				// トリミングした画像のURLをcropImgに格納
+				this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
+				// トリミングした画像を選択されたテンプレートの上に合成する
+				const croppedImg = new Image();
+				croppedImg.src = this.cropImg;
+				croppedImg.onload = () =>{
+					const canvas = document.querySelector("#canvas");
+					const ctx = canvas.getContext("2d");
+					// 描画の位置は仮設定
+					ctx.drawImage(croppedImg, 70, 120, 500, 500);
+        }
+    	},
+      showTemplate() {
+				const selectedTemplate = new Image();
+				selectedTemplate.src = this.templates[this.selectedSlide].img;
+				selectedTemplate.onload = () =>{
+					const canvas = document.querySelector("#canvas");
+					const ctx = canvas.getContext("2d");
+					ctx.drawImage(selectedTemplate, 0, 0, canvas.width, canvas.height);
+        }
+			}
 		}
 	}
 </script>
