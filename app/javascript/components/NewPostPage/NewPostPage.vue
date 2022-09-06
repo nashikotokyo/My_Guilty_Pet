@@ -30,24 +30,6 @@
     	</div>
   	</div>
 	  <!-- Templates Slider End -->
-	  <!-- Select Pet Image Start -->
-    <div class="card rounded-3 my-5">
-	    <!-- Title -->
-	    <div class="card-header text-center">
-		    <h3>ペットの画像を選択</h3>
-	    </div>
-	    <!-- Body -->
-	    <div class="card-body d-flex flex-column justify-content-center">
-				<input class="form-control" type="file" ref="uploadedFile" @change="getFileUrl">
-        <div v-if="uploadedFileUrl">
-					<img class="pt-3" :src="uploadedFileUrl">
-					<div class="text-end">
-            <input type="button" value="選択する" class="btn btn-warning mt-3">
-          </div>
-				</div> 
-    	</div>
-  	</div>
-	  <!-- Select Pet Image End -->
 		<!-- Crop Image and Combine Start -->
 		<div class="card rounded-3 my-5">
 	    <!-- Title -->
@@ -91,7 +73,6 @@
     data: function () {
       return {
 				selectedSlide: 0,
-				uploadedFileUrl: '',
         templates: [
 					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
 					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
@@ -129,10 +110,6 @@
 			getActiveSlide(){
 				this.selectedSlide = this.$refs.swiperTop.$swiper.realIndex
 			},
-			getFileUrl(){
-				const uploadedFile = this.$refs.uploadedFile.files[0] 
-        this.uploadedFileUrl = URL.createObjectURL(uploadedFile)
-      },
 			setImage (e) {
 				const file = e.target.files[0]
 				if (!file.type.includes('image/')) {
