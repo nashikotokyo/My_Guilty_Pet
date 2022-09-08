@@ -30,31 +30,62 @@
     	</div>
   	</div>
 	  <!-- Templates Slider End -->
-		<!-- Crop Image and Combine Start -->
+		<!-- Create Image Stard -->
 		<div class="card rounded-3 my-5">
 	    <!-- Title -->
 	    <div class="card-header text-center">
-		    <h3>ペットの画像を選択・トリミング</h3>
+		    <h3>画像と文字の合成</h3>
 	    </div>
 	    <!-- Body -->
 	    <div class="card-body d-flex flex-column justify-content-center">
-				<label for="pet_image">ペットの画像を選択</label>
-				<input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
+				<div class="form-group">
+					<label for="pet_image">ペットの画像を選択</label>
+	  			<input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
+        </div>
 				<div v-show="imgSrc" class="mt-3">
           <vue-cropper
 						ref="cropper"
 						:src="imgSrc"
 						:auto-crop-area="0.5"
 						:aspect-ratio="1 / 1"
-						/>
+					/>
+					<div class="text-end">
+            <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
+					</div>
+		  	</div>
+				<div class="mt-3" v-show="cropImg">
+					<div class="form-group mt-1" >
+						<label for="pet_name">ペットの名前</label>
+						<input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
 						<div class="text-end">
-              <button class="btn btn-warning mt-3" @click.prevent="combineCroppedImg">トリミングして合成</button>
+							<button @click="drawPetName" class="btn btn-warning mt-3">合成</button>
 						</div>
+					</div>
+					<div class="form-group mt-1">
+						<label for="crime_name">犯行内容・罪状</label>
+						<input type="text" class="form-control" id="crime_name" placeholder="脱走罪・ブランドバッグ破壊罪・可愛すぎ罪など"></input>
+						<div class="text-end">
+							<button @click="drawCrimeName" class="btn btn-warning mt-3">合成</button>
+						</div> 
+					</div>
+					<div class="form-group  mt-1">
+						<label for="bounty">懸賞金額</label>
+						<input type="text" class="form-control" id="bounty" placeholder="¥30,000,000"></input>
+						<div class="text-end">
+							<button @click="drawBounty" class="btn btn-warning mt-3">合成</button>
+						</div> 
+					</div>
 				</div>
-				<canvas id="canvas" width="1200" height="630" class="mt-3"></canvas>
-    	</div>
+				<div class="mt-3">
+					<label for="canvas-wrapper">合成イメージ</label>
+					<div class="canvas-wrapper mt-3">
+						<canvas id="image_canvas" width="1200" height="630"></canvas>
+						<canvas id="text_canvas" width="1200" height="630"></canvas>
+					</div>
+			  </div>
+			</div>      
     </div>
-	  <!-- Crop Image and Combine End -->
+	  <!-- Create Image End -->
   </div>
 </template>
 
@@ -96,6 +127,7 @@
 	    	},
 				imgSrc: '',
         cropImg: '',
+				petName: '',
       }
     },
 		mounted() {
@@ -128,14 +160,14 @@
 					alert('Sorry, FileReader API not supported');
 				}
 			},
-			combineCroppedImg() {
+			drawCroppedImg() {
 				// トリミングした画像のURLをcropImgに格納
 				this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
 				// トリミングした画像を選択されたテンプレートの上に合成する
 				const croppedImg = new Image();
 				croppedImg.src = this.cropImg;
 				croppedImg.onload = () =>{
-					const canvas = document.querySelector("#canvas");
+					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
 					// 描画の位置は仮設定
 					ctx.drawImage(croppedImg, 70, 120, 500, 500);
@@ -145,10 +177,46 @@
 				const selectedTemplate = new Image();
 				selectedTemplate.src = this.templates[this.selectedSlide].img;
 				selectedTemplate.onload = () =>{
-					const canvas = document.querySelector("#canvas");
+					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
 					ctx.drawImage(selectedTemplate, 0, 0, canvas.width, canvas.height);
         }
+			},
+			drawPetName(){
+				const canvas = document.querySelector("#text_canvas");
+				const ctx = canvas.getContext('2d');
+				const petName = document.querySelector("#pet_name");
+				//消去の位置は仮設定
+				ctx.clearRect(0, 0, 1200, 280);
+				//スタイルは仮設定
+				ctx.font = '70px serif';
+				ctx.fillStyle = '#404040';
+				//描画の位置は仮設定
+				ctx.fillText(petName.value, 700, 250, 370);
+			},
+			drawCrimeName(){
+				const canvas = document.querySelector("#text_canvas");
+				const ctx = canvas.getContext('2d');
+				const crimeName = document.querySelector("#crime_name");
+				//消去の位置は仮設定
+				ctx.clearRect(0, 300, 1200, 150);
+				//スタイルは仮設定
+				ctx.font = '70px serif';
+				ctx.fillStyle = '#404040';
+				//描画の位置は仮設定
+				ctx.fillText(crimeName.value, 700, 400, 370);
+			},
+			drawBounty(){
+				const canvas = document.querySelector("#text_canvas");
+				const ctx = canvas.getContext('2d');
+				const bounty = document.querySelector("#bounty");
+				//消去の位置は仮設定
+				ctx.clearRect(0, 450, 1200, 150);
+				//スタイルは仮設定
+				ctx.font = '70px serif';
+				ctx.fillStyle = '#404040';
+				//描画の位置は仮設定
+				ctx.fillText(bounty.value, 700, 550, 370);
 			}
 		}
 	}
@@ -181,5 +249,19 @@
     &.gallery-thumbs .swiper-slide-active {
       opacity: 1;
     }
+  }
+
+	.canvas-wrapper {
+    position: relative;
+		width: 100%;
+		padding-top: 52.5%;
+		height:auto;
+  }
+
+	.canvas-wrapper canvas {
+		position: absolute;
+		width: 100%;
+    top: 0;
+    left: 0;
   }
 </style>
