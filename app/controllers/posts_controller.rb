@@ -9,11 +9,8 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to posts_path
-    else
-      render :new
-    end
+    @post.save
+    redirect_to posts_path, success: '投稿しました！'
   end
   
   private

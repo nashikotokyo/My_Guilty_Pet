@@ -82,10 +82,41 @@
 						<canvas id="image_canvas" width="1200" height="630"></canvas>
 						<canvas id="text_canvas" width="1200" height="630"></canvas>
 					</div>
+					<div class="text-end">
+  				  <button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">合成を完了</button>
+					</div>
 			  </div>
 			</div>      
     </div>
 	  <!-- Create Image End -->
+		<!-- New Post Start -->
+    <div class="card rounded-3 my-5">
+	    <!-- Title -->
+	    <div class="card-header text-center">
+		    <h3>画像の投稿</h3>
+	    </div>
+	    <!-- Body -->
+	    <div class="card-body d-flex flex-column justify-content-center">
+		    <canvas id="combined_canvas" width="1200" height="630"></canvas>
+				<!-- Form Start -->
+				<form action="/posts" accept-charset="UTF-8" method="post">
+					<!-- csrfトークンをhiddenで設定 -->
+					<input type="hidden" id="authenticity_token" name="authenticity_token" value="" autocomplete="off" />
+					<!-- 最終イメージをhiddenで設定 -->
+					<input type="hidden" id="post_image" name="post[image]" value="" />
+					<!-- キャプション -->
+					<div class="form-group">
+						<label for="post_body">キャプション(任意)</label>
+            <textarea class="form-control" name="post[body]" id="post_body"></textarea>
+					</div>
+					<div class="text-end">
+					  <button type="submit" class="btn btn-warning mt-3" data-disable-with="投稿する">投稿する</button>
+				  </div>
+        </form>
+				<!-- Form End -->
+    	</div>
+  	</div>
+	  <!-- Templates Slider End -->
   </div>
 </template>
 
@@ -126,17 +157,20 @@
 	    		slideToClickedSlide: true
 	    	},
 				imgSrc: '',
-        cropImg: '',
-				petName: '',
+        cropImg: '',			
       }
     },
 		mounted() {
+			// csrfトークンの設定
+			const token = document.getElementsByName("csrf-token")[0].content;
+			document.querySelector("#authenticity_token").value = token;
+
   		this.$nextTick(() => {
 	  		const swiperTop = this.$refs.swiperTop.$swiper
 	  		const swiperThumbs = this.$refs.swiperThumbs.$swiper
 		  	swiperTop.controller.control = swiperThumbs
 		  	swiperThumbs.controller.control = swiperTop
-		  })
+		  });
     },
 		methods:{
 			getActiveSlide(){
@@ -217,6 +251,28 @@
 				ctx.fillStyle = '#404040';
 				//描画の位置は仮設定
 				ctx.fillText(bounty.value, 700, 550, 370);
+			},
+			setCompletedImage:async function(base, assets){
+				// imageとtextの2つのcanvasを合成する
+				const canvas = document.querySelector(base);
+        const ctx = canvas.getContext("2d");
+
+				for(let i=0; i<assets.length; i++){
+					const image1 = await this.getImagefromCanvas(assets[i]);
+					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+				}
+			  // 完成イメージをフォーム内のhiddenに設定
+				const imageUrl = canvas.toDataURL('image/jpeg');
+				document.querySelector("#post_image").value = imageUrl
+			},
+			getImagefromCanvas(id){
+				return new Promise((resolve, reject) => {
+					const image = new Image();
+					const ctx = document.querySelector(id).getContext("2d");
+					image.onload = () => resolve(image);
+					image.onerror = (e) => reject(e);
+					image.src = ctx.canvas.toDataURL();
+				});
 			}
 		}
 	}
