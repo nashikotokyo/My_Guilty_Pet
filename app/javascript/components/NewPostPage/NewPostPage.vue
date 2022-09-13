@@ -7,7 +7,7 @@
 			<div class="col-sm-10 col-md-8 col-lg-7">
 	
 				<!-- Templates Slider START -->
-				<div class="card rounded-3 my-5">
+				<div v-show="activePart == 1" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
 						<h3>テンプレートの選択</h3>
@@ -38,13 +38,13 @@
 				<!-- Templates Slider END -->
 
 				<!-- Create Image START -->
-				<Template0 v-if="selectedSlide === 0"></Template0>
-				<Template1 v-if="selectedSlide === 1"></Template1>
-				<Template2 v-if="selectedSlide === 2"></Template2>
+				<Template0 v-if="selectedSlide === 0" v-model="activePart" ></Template0>
+				<Template1 v-if="selectedSlide === 1" v-model="activePart"></Template1>
+				<Template2 v-if="selectedSlide === 2" v-model="activePart"></Template2>
         <!-- Create Image END -->
 
 				<!-- New Post START -->
-				<div class="card rounded-3 my-5">
+				<div v-show="activePart == 3" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
 						<h3>画像の投稿</h3>
@@ -97,6 +97,7 @@
     data: function () {
       return {
 				selectedSlide: 0,
+				activePart: 1,
         templates: [
 					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
 					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
@@ -144,6 +145,8 @@
 					const ctx = canvas.getContext("2d");
 					ctx.drawImage(selectedTemplate, 0, 0, canvas.width, canvas.height);
         }
+				// 画像と文字の合成部分を表示
+				this.activePart = 2;
 			}
 		}
 	}

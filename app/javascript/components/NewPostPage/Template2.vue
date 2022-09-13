@@ -1,6 +1,6 @@
 <template>
 	<!-- Template0をコピーした仮のテンプレートを用意 -->
-  <div class="card rounded-3 my-5">
+  <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
       <h3>画像と文字の合成(Template2)</h3>
@@ -67,6 +67,7 @@
 		components: {
 			VueCropper
     },
+		props: ['value'],
     data: function () {
       return {
 				imgSrc: '',
@@ -153,6 +154,8 @@
 			  // 完成イメージをフォーム内のhiddenに設定
 				const imageUrl = canvas.toDataURL('image/jpeg');
 				document.querySelector("#post_image").value = imageUrl
+        // 完成した画像の投稿部分を表示
+        this.localActivePart = 3;
 			},
 			getImagefromCanvas(id){
 				return new Promise((resolve, reject) => {
@@ -163,7 +166,17 @@
 					image.src = ctx.canvas.toDataURL();
 				});
 			}
-		}
+		},
+		computed: {
+			localActivePart: {
+				get: function() {
+					return this.value
+				},
+				set: function(value) {
+					this.$emit('input', value)
+				},
+      },
+		},
 	}
 </script>
 
