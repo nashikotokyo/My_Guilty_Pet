@@ -2,7 +2,7 @@
 	<!-- Container START -->
 	<div class="container">
 		<!-- Row START -->
-		<div class="row justify-content-center vh-100 py-5">
+		<div class="row justify-content-center py-5">
 			<!-- Main content START -->
 			<div class="col-sm-10 col-md-8 col-lg-7">
 	
