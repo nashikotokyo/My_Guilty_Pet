@@ -3,12 +3,17 @@
   <!-- Card header START -->
   <div class="card-header border-0 pb-0">
     <!-- User name & Post time -->
-    <div>
-      <h6 class="mb-0">
-        <%= post.user.username %>
-      </h6>
+    <div class="d-flex align-items-center justify-content-between" >
+      <div>
+        <h6 class="mb-0"><%= post.user.username %></h6>
+        <p class="small mb-0"><%= l post.created_at, format: :short %></p>
+      </div>
+      <% if current_user&.own?(post)%>
+        <%= link_to post_path(post), class: 'mr-3 delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      <% end %>
     </div>
-    <p class="small mb-0"><%= l post.created_at, format: :short %></p>
   </div>
   <!-- Card header END -->
 
