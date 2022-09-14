@@ -22,5 +22,5 @@ class Post < ApplicationRecord
   mount_base64_uploader :image, PostImageUploader
 
   validates :image, presence: true
-  validates :body, length: {maximum: 1000}
+  validates :body, length: { maximum: 1000 }
 end
