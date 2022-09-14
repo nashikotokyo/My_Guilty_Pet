@@ -50,8 +50,13 @@
           <canvas id="image_canvas" width="1200" height="630"></canvas>
           <canvas id="text_canvas" width="1200" height="630"></canvas>
         </div>
-        <div class="text-end">
-          <button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">合成を完了</button>
+        <div class="d-flex justify-content-between">
+					<div>
+						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
+					</div>
+          <div>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
+					</div>					          
         </div>
       </div>
     </div>      
@@ -164,6 +169,9 @@
 					image.onerror = (e) => reject(e);
 					image.src = ctx.canvas.toDataURL();
 				});
+			},
+			backTo1st(){
+				this.localActivePart = 1;
 			}
 		},
 		computed: {

@@ -31,7 +31,7 @@
 							</swiper>
 						</div>
 						<div class="text-end">
-							<input type="button" value="選択する" class="btn btn-warning mt-3" @click="showTemplate">
+							<input type="button" value="選択" class="btn btn-warning mt-3" @click="showTemplate">
 						</div>
 					</div>
 				</div>
@@ -63,8 +63,13 @@
 								<label for="post_body">キャプション(任意)</label>
 								<textarea class="form-control" name="post[body]" id="post_body"></textarea>
 							</div>
-							<div class="text-end">
-								<button type="submit" class="btn btn-warning mt-3" data-disable-with="投稿する">投稿する</button>
+							<div class="d-flex justify-content-between">
+				      	<div>
+						      <button type="button" @click="backTo2nd" class="btn btn-warning mt-3">戻る</button>
+								</div>
+          		  <div>
+							  	<button type="submit" class="btn btn-warning mt-3" data-disable-with="投稿する">投稿</button>
+						  	</div>
 							</div>
 						</form>
 						<!-- Form END -->
@@ -146,6 +151,9 @@
 					ctx.drawImage(selectedTemplate, 0, 0, canvas.width, canvas.height);
         }
 				// 画像と文字の合成部分を表示
+				this.activePart = 2;
+			},
+			backTo2nd () {
 				this.activePart = 2;
 			}
 		}
