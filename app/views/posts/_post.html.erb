@@ -22,6 +22,8 @@
     <p><%= post.body %></p>
     <!-- Post Image -->
     <%= image_tag post.image.url %>
+    <!-- Comment Input Form-->
+    <%= render 'comments/form', post: post, comment: comment %>
   </div>
   <!-- Card body END -->
 </div>
