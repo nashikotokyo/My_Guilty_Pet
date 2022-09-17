@@ -1,5 +1,5 @@
 $("#comment-<%= @comment.id %>").remove()
-<% unless @comment.post.comments.present?%>
+<% unless @comment.post.comments.present? %>
   $("#summary-<%= @comment.post.id %>").text('')
   $("#summary-<%= @comment.post.id %>").addClass('summary-arrow-hidden')
 <% end %>
