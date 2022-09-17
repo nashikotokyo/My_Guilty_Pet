@@ -11,10 +11,7 @@
 #                                    login GET    /login(.:format)                                                                                  user_sessions#new
 #                                   logout DELETE /logout(.:format)                                                                                 user_sessions#destroy
 #                            post_comments POST   /posts/:post_id/comments(.:format)                                                                comments#create
-#                             edit_comment GET    /comments/:id/edit(.:format)                                                                      comments#edit
-#                                  comment PATCH  /comments/:id(.:format)                                                                           comments#update
-#                                          PUT    /comments/:id(.:format)                                                                           comments#update
-#                                          DELETE /comments/:id(.:format)                                                                           comments#destroy
+#                                  comment DELETE /comments/:id(.:format)                                                                           comments#destroy
 #                                    posts GET    /posts(.:format)                                                                                  posts#index
 #                                          POST   /posts(.:format)                                                                                  posts#create
 #                                 new_post GET    /posts/new(.:format)                                                                              posts#new
@@ -58,7 +55,7 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   delete 'logout', to: 'user_sessions#destroy'
   resources :posts, only: %i[new create index destroy], shallow: true do
-    resources :comments, only: %i[create edit update destroy]
+    resources :comments, only: %i[create destroy]
   end
 
 end

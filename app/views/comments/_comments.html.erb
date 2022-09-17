@@ -3,7 +3,7 @@
     <% if comments.present? %>
       <summary>コメントを見る</summary>
     <% else %> 
-      <summary class="summary-arrow-hidden" id="summary-hidden-<%= post.id %>"></summary>
+      <summary class="summary-arrow-hidden" id="summary-<%= post.id %>"></summary>
     <% end %>
     <ul id="comments-wrap-<%= post.id %>" class="list-unstyled pt-2">
       <%= render comments %>

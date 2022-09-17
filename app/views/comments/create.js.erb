@@ -3,6 +3,6 @@
 <% else %>
   $("#comments-wrap-<%= @comment.post.id %>").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
   $("#input-comment-box-<%= @comment.post.id %>").val('')
-  $("#summary-hidden-<%= @comment.post.id %>").text('コメントを見る')
-  $("#summary-hidden-<%= @comment.post.id %>").removeClass('summary-arrow-hidden')
+  $("#summary-<%= @comment.post.id %>").text('コメントを見る')
+  $("#summary-<%= @comment.post.id %>").removeClass('summary-arrow-hidden')
 <% end %>

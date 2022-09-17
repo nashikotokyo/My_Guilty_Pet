@@ -10,7 +10,7 @@
       </div>
       <% if current_user&.own?(post)%>
         <%= link_to post_path(post), class: 'mr-3 delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-          <i class="fa-solid fa-trash-can"></i>
+          <i class="fa-solid fa-trash-can pl-1"></i>
         <% end %>
       <% end %>
     </div>
