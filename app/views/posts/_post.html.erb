@@ -1,5 +1,5 @@
 <!-- Card START -->
-<div class="card my-4">
+<div class="card my-4" id="post-<%= post.id %>">
   <!-- Card header START -->
   <div class="card-header border-0 pb-0">
     <!-- User name & Post time -->
@@ -19,11 +19,15 @@
 
   <!-- Card body START -->
   <div class="card-body">
-    <p><%= post.body %></p>
-    <!-- Post Image -->
-    <%= image_tag post.image.url %>
+    <!-- Post Contents -->
+    <div>
+      <p><%= post.body %></p>
+      <%= image_tag post.image.url %>
+    </div>
     <!-- Comment Input Form-->
     <%= render 'comments/form', post: post, comment: comment %>
+    <!-- Show Comments -->
+    <%= render 'comments/comments', comments: post.comments, post: post %>
   </div>
   <!-- Card body END -->
 </div>

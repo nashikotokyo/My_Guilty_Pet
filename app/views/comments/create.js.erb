@@ -1,1 +1,8 @@
-console.log("create.js.erbファイルが呼び出されました！");
+<% if @comment.errors.present? %>
+  alert("#{@comment.errors.full_messages.join('\n')}");
+<% else %>
+  $("#comments-wrap-<%= @comment.post.id %>").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
+  $("#input-comment-box-<%= @comment.post.id %>").val('')
+  $("#summary-hidden-<%= @comment.post.id %>").text('コメントを見る')
+  $("#summary-hidden-<%= @comment.post.id %>").removeClass('summary-arrow-hidden')
+<% end %>
