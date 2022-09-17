@@ -57,5 +57,4 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create index destroy], shallow: true do
     resources :comments, only: %i[create destroy]
   end
-
 end
