@@ -1,0 +1,8 @@
+<% if @comment.errors.present? %>
+  alert("<%= @comment.errors.full_messages.join('\n') %>");
+<% else %>
+  $("#comments-wrap-<%= @comment.post.id %>").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
+  $("#input-comment-box-<%= @comment.post.id %>").val('')
+  $("#summary-<%= @comment.post.id %>").text('コメントを見る')
+  $("#summary-<%= @comment.post.id %>").removeClass('summary-arrow-hidden')
+<% end %>

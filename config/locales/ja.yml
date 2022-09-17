@@ -3,12 +3,15 @@ ja:
     models:
       user: 'ユーザー'
       post: '投稿'
+      comment: 'コメント'
     attributes:
       user:
         username: 'ユーザー名'
       post:
         image: '画像'
         body: '本文'
+      comment:
+        body: 'キャプション'
 
   attributes:
     created_at: '作成日時'

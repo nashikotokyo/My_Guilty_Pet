@@ -4,7 +4,8 @@
   <div class="row justify-content-center">
     <!-- Main content START -->
     <div class="col-md-8 col-xl-6">
-      <%= render @posts %>
+      <!-- Post Partial START -->
+      <%= render @posts, comment: @comment, comments: @comments%>
     </div>
     <!-- Main content END -->
   </div>
