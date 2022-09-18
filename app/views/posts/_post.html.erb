@@ -32,7 +32,9 @@
       </div>
     <% end %>
     <!-- Comment Input Form-->
-    <%= render 'comments/form', post: post, comment: comment %>
+    <% if logged_in? %>
+      <%= render 'comments/form', post: post, comment: comment %>
+    <% end %>
     <!-- Show Comments -->
     <%= render 'comments/comments', comments: post.comments.includes(:user).order(created_at: :desc), post: post %>
   </div>
