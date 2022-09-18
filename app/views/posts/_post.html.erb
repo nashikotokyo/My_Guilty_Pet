@@ -8,6 +8,7 @@
         <h6 class="mb-0"><%= post.user.username %></h6>
         <p class="small mb-0"><%= l post.created_at, format: :short %></p>
       </div>
+      <!-- Delete Button -->
       <% if current_user&.own?(post)%>
         <%= link_to post_path(post), class: 'mr-3 delete-button', method: :delete, data: { confirm: '本当に削除しますか？' } do %>
           <i class="fa-solid fa-trash-can pl-1"></i>
@@ -24,10 +25,18 @@
       <p><%= post.body %></p>
       <%= image_tag post.image.url %>
     </div>
+    <!-- Like Button -->
+    <% if logged_in? && !current_user.own?(post) %>
+      <div class="mt-2">
+        <%= render 'likes/like_area', post: post %>
+      </div>
+    <% end %>
     <!-- Comment Input Form-->
-    <%= render 'comments/form', post: post, comment: comment %>
+    <% if logged_in? %>
+      <%= render 'comments/form', post: post, comment: comment %>
+    <% end %>
     <!-- Show Comments -->
-    <%= render 'comments/comments', comments: post.comments, post: post %>
+    <%= render 'comments/comments', comments: post.comments.includes(:user).order(created_at: :desc), post: post %>
   </div>
   <!-- Card body END -->
 </div>
