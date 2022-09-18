@@ -27,7 +27,7 @@
     <!-- Comment Input Form-->
     <%= render 'comments/form', post: post, comment: comment %>
     <!-- Show Comments -->
-    <%= render 'comments/comments', comments: post.comments, post: post %>
+    <%= render 'comments/comments', comments: post.comments.includes(:user).order(created_at: :desc), post: post %>
   </div>
   <!-- Card body END -->
 </div>
