@@ -27,8 +27,8 @@
     </div>
     <!-- Like Button -->
     <% if logged_in? && !current_user.own?(post) %>
-      <div class="mr-auto">
-        <%= render 'like_area', post: post %>
+      <div class="mt-2">
+        <%= render 'likes/like_area', post: post %>
       </div>
     <% end %>
     <!-- Comment Input Form-->
