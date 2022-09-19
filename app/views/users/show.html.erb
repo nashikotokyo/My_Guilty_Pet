@@ -1,0 +1,44 @@
+<!-- Container START -->
+<div class="container my-4">
+  <!-- Row START -->
+  <div class="row justify-content-center">
+    <!-- Main content START -->
+    <div class="col-md-8 col-xl-6">
+      <!-- Card START -->
+      <div class="card my-4">
+        <!-- User Info START -->
+        <div class="card-body text-center">
+          <h1 class="h5"><%= @user.username %></h1>
+          <% if current_user&.id == @user.id%>
+            <%= link_to '#', class: 'btn btn-outline-secondary' do %>
+              <i class="fa-solid fa-user-pen"></i>プロフィールを編集
+            <% end %>
+          <% end %>
+        </div>
+        <!-- User Info END -->
+        <!-- Tabs START -->
+        <% if current_user&.id == @user.id%>
+          <div class="card-footer mt-3 pt-2">
+            <!-- Nav profile pages -->
+            <ul class="nav nav-bottom-line align-items-center justify-content-center mb-0 border-0">
+              <li class="nav-item"> <a class="nav-link active" href="#"> 投稿一覧 </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#"> お気に入り </a> </li>
+            </ul>        
+          </div>
+        <% end %>
+        <!-- Tabs End -->
+      </div>
+      <!-- Card END -->
+      <!-- User's Posts Start -->
+      <!-- User's Posts End -->
+      <!-- User's Favorites Posts Start -->
+      <!-- User's Favorites Posts End -->
+    </div>
+    <!-- Main content END -->
+  </div>
+  <!-- Row END -->
+</div>
+<!-- Container END -->
+
+
+   
