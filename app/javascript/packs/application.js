@@ -15,3 +15,4 @@ Rails.start()
 ActiveStorage.start()
 
 import '../javascripts/new-post-page'
+import '../javascripts/tab-switch'
