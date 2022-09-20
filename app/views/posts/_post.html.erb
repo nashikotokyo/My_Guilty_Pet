@@ -5,7 +5,9 @@
     <!-- User name & Post time -->
     <div class="d-flex align-items-center justify-content-between" >
       <div>
-        <h6 class="mb-0"><%= post.user.username %></h6>
+        <%= link_to user_path(post.user) do %>
+          <h6 class="mb-0"><%= post.user.username %></h6>
+        <% end %>
         <p class="small mb-0"><%= l post.created_at, format: :short %></p>
       </div>
       <!-- Delete Button -->
