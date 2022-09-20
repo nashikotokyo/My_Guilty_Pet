@@ -19,6 +19,9 @@
 #                                 new_post GET    /posts/new(.:format)                                                                              posts#new
 #                                     post DELETE /posts/:id(.:format)                                                                              posts#destroy
 #                                     user GET    /users/:id(.:format)                                                                              users#show
+#                             edit_profile GET    /profile/edit(.:format)                                                                           profiles#edit
+#                                  profile PATCH  /profile(.:format)                                                                                profiles#update
+#                                          PUT    /profile(.:format)                                                                                profiles#update
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
 #            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -63,4 +66,5 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
   end
   resources :users, only: %i[show]
+  resource :profile, only: %i[edit update]
 end

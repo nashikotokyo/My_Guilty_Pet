@@ -3,14 +3,14 @@
   <!-- Row START -->
   <div class="row justify-content-center">
     <!-- Main content START -->
-    <div class="col-md-8 col-xl-6">
+    <div class="col-sm-10 col-md-8 col-lg-7">
       <!-- Card START -->
       <div class="card my-4">
         <!-- User Info START -->
         <div class="card-body text-center">
           <h1 class="h5"><%= @user.username %></h1>
           <% if current_user&.id == @user.id%>
-            <%= link_to '#', class: 'btn btn-outline-secondary' do %>
+            <%= link_to edit_profile_path, class: 'btn btn-outline-secondary' do %>
               <i class="fa-solid fa-user-pen"></i>プロフィールを編集
             <% end %>
           <% end %>
