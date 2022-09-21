@@ -30,6 +30,9 @@
     <%= render "shared/flash_messages" %>
     <main>
       <%= yield %>
+      <% if logged_in? %>
+        <%= render "shared/menu_icon" %>
+      <% end %>
     </main>
     <%= render "shared/footer" %>
 
