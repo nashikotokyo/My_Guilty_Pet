@@ -14,6 +14,7 @@
 #                                  comment DELETE /comments/:id(.:format)                                                                           comments#destroy
 #                               post_likes POST   /posts/:post_id/likes(.:format)                                                                   likes#create
 #                                     like DELETE /likes/:id(.:format)                                                                              likes#destroy
+#                            ranking_posts GET    /posts/ranking(.:format)                                                                          posts#ranking
 #                                    posts GET    /posts(.:format)                                                                                  posts#index
 #                                          POST   /posts(.:format)                                                                                  posts#create
 #                                 new_post GET    /posts/new(.:format)                                                                              posts#new
@@ -62,8 +63,12 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resources :posts, only: %i[new create index destroy], shallow: true do
+    collection do
+      get :ranking
+    end
     resources :comments, only: %i[create destroy]
     resources :likes, only: %i[create destroy]
+
   end
   resources :users, only: %i[show]
   resource :profile, only: %i[edit update]
