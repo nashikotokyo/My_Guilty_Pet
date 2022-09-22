@@ -22,6 +22,11 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました！'
   end
 
+  def ranking
+    @top10_posts = Post.includes(:user).find(Like.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
+    @comment = Comment.new
+  end
+
   private
 
   def post_params

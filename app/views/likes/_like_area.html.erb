@@ -1,7 +1,15 @@
-<div id="like_area-<%= post.id %>">
-  <% if current_user.like?(post)%>
-    <%= render 'likes/unlike', post: post %>
-  <% else %>
-    <%= render 'likes/like', post: post %>
-  <% end %>
+<div class="d-flex align-items-center mt-2 mx-3">
+  <div id="like_area-<%= post.id %>">
+    <% if current_user.like?(post)%>
+      <%= render 'likes/unlike', post: post %>
+    <% else %>
+      <%= render 'likes/like', post: post %>
+    <% end %>
+  </div>
+  <!-- Like Count -->
+  <div id="like_count-<%= post.id %>" class="mx-1 small">
+    <% if post.likes.count > 0 %>
+      <%= "(#{post.likes.count})" %>
+    <% end %>
+  </div>
 </div>
