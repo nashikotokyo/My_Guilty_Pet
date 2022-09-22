@@ -24,12 +24,10 @@
   <!-- Card header END -->
 
   <!-- Card body START -->
-  <div class="card-body">
+  <div class="card-body p-0">
     <!-- Post Contents -->
-    <div>
-      <p><%= post.body %></p>
-      <%= image_tag post.image.url %>
-    </div>
+    <p class="mx-3 my-3"><%= post.body %></p>
+    <%= image_tag post.image.url %>
     <!-- Like Button -->
     <% if logged_in? && !current_user.own?(post) %>
       <%= render 'likes/like_area', post: post %>

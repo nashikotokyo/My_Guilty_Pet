@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center mt-2">
+<div class="d-flex align-items-center mt-2 mx-3">
   <div id="like_area-<%= post.id %>">
     <% if current_user.like?(post)%>
       <%= render 'likes/unlike', post: post %>
