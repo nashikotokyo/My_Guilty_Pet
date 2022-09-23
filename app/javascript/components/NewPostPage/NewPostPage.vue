@@ -104,7 +104,7 @@
 				selectedSlide: 0,
 				activePart: 1,
         templates: [
-					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
+					{id:0, img:'/assets/images/templates/wanted_1.png'},
 					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
 					{id:2, img:'/assets/images/templates/test2_1200x630.png'}
 				],
@@ -163,7 +163,7 @@
 <style lang="scss" scoped>
   .thumb-example {
     height: auto;
-    background-color: black;
+    background-color: white;
   }
   .swiper {
     .swiper-slide {
