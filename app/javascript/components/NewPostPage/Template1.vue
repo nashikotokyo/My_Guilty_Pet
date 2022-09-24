@@ -3,7 +3,7 @@
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
-      <h3>画像と文字の合成(Template1)</h3>
+      <h3>画像と文字の合成</h3>
     </div>
     <!-- Body -->
     <div class="card-body d-flex flex-column justify-content-center">
@@ -16,32 +16,44 @@
           ref="cropper"
           :src="imgSrc"
           :auto-crop-area="0.5"
-          :aspect-ratio="1 / 1"
+          :aspect-ratio="3 / 2"
         />
         <div class="text-end">
           <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
       <div class="mt-3" v-show="cropImg">
+				<p class="mb-0 mt-2">・新聞の見出しを入力</p>
+				<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
         <div class="form-group mt-1" >
-          <label for="pet_name">ペットの名前</label>
-          <input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
+          <label for="headline1">見出し(上部)</label>
+          <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕"></input>
           <div class="text-end">
-            <button @click="drawPetName" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawHeadline1" class="btn btn-warning mt-3">合成</button>
           </div>
         </div>
+				<p class="mb-0 mt-2">・犯行内容や犯行理由など詳細を入力</p>
+				<p class="mb-0 small">(例)〇〇を破壊した罪/犯行理由は〇〇からと供述</p>
+				<p class="mb-2 small">※各列最大6文字(スペースも認識されます)</p>
         <div class="form-group mt-1">
-          <label for="crime_name">犯行内容・罪状</label>
-          <input type="text" class="form-control" id="crime_name" placeholder="脱走罪・ブランドバッグ破壊罪・可愛すぎ罪など"></input>
+          <label for="detail1">詳細(1列目)</label>
+          <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを"></input>
           <div class="text-end">
-            <button @click="drawCrimeName" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawDetail1" class="btn btn-warning mt-3">合成</button>
           </div> 
         </div>
         <div class="form-group  mt-1">
-          <label for="bounty">懸賞金額</label>
-          <input type="text" class="form-control" id="bounty" placeholder="¥30,000,000"></input>
+          <label for="detail2">詳細(2列目)</label>
+          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ"></input>
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawDetail2" class="btn btn-warning mt-3">合成</button>
+          </div> 
+        </div>
+				<div class="form-group  mt-1">
+          <label for="detail3">詳細(3列目)</label>
+          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪"></input>
+          <div class="text-end">
+            <button @click="drawDetail3" class="btn btn-warning mt-3">合成</button>
           </div> 
         </div>
       </div>
@@ -56,7 +68,7 @@
 						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">合成を完了</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
 					</div>					          
         </div>
       </div>
@@ -107,45 +119,67 @@
 				croppedImg.onload = () =>{
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
-					// 描画の位置は仮設定
-					ctx.drawImage(croppedImg, 70, 120, 500, 500);
+					// 描画の位置を設定
+					ctx.drawImage(croppedImg, 70, 190, 600, 400);
         }
 			},
-			drawPetName(){
+			drawHeadline1(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
-				const petName = document.querySelector("#pet_name");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 0, 1200, 280);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(petName.value, 700, 250, 370);
+				const headline1 = document.querySelector("#headline1");
+				//消去の位置を設定
+				ctx.clearRect(0, 0, 1200, 160);
+				//文字のデザインを設定
+				ctx.font = '900 90px sans-serif';
+				ctx.fillStyle = '#ffffff';
+				ctx.textAlign = 'center'
+				//描画の位置を設定
+				ctx.fillText(headline1.value, 532, 140, 900);
 			},
-			drawCrimeName(){
+			drawDetail1(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
-				const crimeName = document.querySelector("#crime_name");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 300, 1200, 150);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(crimeName.value, 700, 400, 370);
+				const detail1 = document.querySelector("#detail1");
+				//消去の位置を設定
+				ctx.clearRect(900, 180, 85, 450);
+				//文字のデザインを設定
+				ctx.font = '900 70px serif';
+				ctx.fillStyle = '#14191e';
+				//描画の位置を設定(縦書きで表示)
+				this.tategaki(ctx, detail1.value, 950, 245);
 			},
-			drawBounty(){
+			drawDetail2(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
-				const bounty = document.querySelector("#bounty");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 450, 1200, 150);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(bounty.value, 700, 550, 370);
+				const detail2 = document.querySelector("#detail2");
+				//消去の位置を設定
+				ctx.clearRect(800, 180, 85, 450);
+				//文字のデザインを設定
+				ctx.font = '900 70px serif';
+				ctx.fillStyle = '#14191e';
+				//描画の位置を設定(縦書きで表示)
+				this.tategaki(ctx, detail2.value, 850, 245);
+			},
+			drawDetail3(){
+				const canvas = document.querySelector("#text_canvas");
+				const ctx = canvas.getContext('2d');
+				const detail3 = document.querySelector("#detail3");
+				//消去の位置を設定
+				ctx.clearRect(700, 180, 85, 450);
+				//文字のデザインを設定
+				ctx.font = '900 70px serif';
+				ctx.fillStyle = '#14191e';
+				//描画の位置を設定(縦書きで表示)
+				this.tategaki(ctx, detail3.value, 750, 245);
+			},
+			tategaki(ctx, text, x, y){
+				const textList = text.split('\n');
+				const lineHeight = ctx.measureText("あ").width;
+				textList.forEach(function(elm, i) {
+					Array.prototype.forEach.call(elm, function(ch, j) {
+						ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
+					});
+				});
 			},
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する
