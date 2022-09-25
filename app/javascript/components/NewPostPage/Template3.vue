@@ -15,21 +15,10 @@
           ref="cropper"
           :src="imgSrc"
           :auto-crop-area="0.5"
-          :aspect-ratio="7 / 4"
+          :aspect-ratio="2 / 1"
         />
         <div class="text-end">
           <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
-        </div>
-      </div>
-      <div class="mt-3" v-show="cropImg">
-				<p class="mb-0 mt-2">・テロップの内容を入力</p>
-				<p class="small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
-        <div class="form-group" >
-          <label for="telop">テロップ</label>
-          <input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕"></input>
-          <div class="text-end">
-            <button @click="drawTelop" class="btn btn-warning mt-3">合成</button>
-          </div>
         </div>
       </div>
       <div class="mt-3">
@@ -95,22 +84,9 @@
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
 					// 描画の位置は仮設定
-					ctx.drawImage(croppedImg, 250, 57, 700, 400);
+					ctx.drawImage(croppedImg, 205, 174, 808, 403);
         }
-			},
-			drawTelop(){
-				const canvas = document.querySelector("#text_canvas");
-				const ctx = canvas.getContext('2d');
-				const telop = document.querySelector("#telop");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 0, 1200, 630);
-				//スタイルは仮設定
-				ctx.font = '900 80px sans-serif';
-				ctx.fillStyle = '#d31720';
-				ctx.textAlign = 'center'
-				//描画の位置は仮設定
-				ctx.fillText(telop.value, 600, 585, 1000);
-			},
+		  },
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する
 				const canvas = document.querySelector(base);

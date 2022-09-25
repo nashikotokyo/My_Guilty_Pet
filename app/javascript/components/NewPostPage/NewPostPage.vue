@@ -41,6 +41,7 @@
 				<Template0 v-if="selectedSlide === 0" v-model="activePart" ></Template0>
 				<Template1 v-if="selectedSlide === 1" v-model="activePart"></Template1>
 				<Template2 v-if="selectedSlide === 2" v-model="activePart"></Template2>
+				<Template3 v-if="selectedSlide === 3" v-model="activePart"></Template3>
         <!-- Create Image END -->
 
 				<!-- New Post START -->
@@ -90,6 +91,7 @@
 	import Template0 from "./Template0.vue";
 	import Template1 from "./Template1.vue";
 	import Template2 from "./Template2.vue";
+	import Template3 from "./Template3.vue";
 
 	export default {
 		components: {
@@ -98,6 +100,7 @@
 			Template0,
 			Template1,
 			Template2,
+			Template3,
     },
     data: function () {
       return {
@@ -106,11 +109,12 @@
         templates: [
 					{id:0, img:'/assets/images/templates/wanted_1.png'},
 					{id:1, img:'/assets/images/templates/newspaper_1.png'},
-					{id:2, img:'/assets/images/templates/breaking_news_1.png'}
+					{id:2, img:'/assets/images/templates/breaking_news_1.png'},
+					{id:3, img:'/assets/images/templates/wanted_2.png'}
 				],
 		  	swiperOptionTop: {
 		  	  loop: true,
-			    loopedSlides: 3,
+			    loopedSlides: 4,
 			    pagination: {
 		  			el: '.swiper-pagination',
 			  		clickable: true
@@ -118,9 +122,9 @@
 	    	},
 		  	swiperOptionThumbs: {
 		  	  loop: true,
-		    	loopedSlides: 3,
+		    	loopedSlides: 4,
 					centeredSlides: true,
-	    		slidesPerView: 3,
+	    		slidesPerView: 4,
 					touchRatio: 0.2,
 	    		slideToClickedSlide: true
 	    	}		

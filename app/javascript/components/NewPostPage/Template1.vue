@@ -1,5 +1,4 @@
 <template>
-	<!-- Template0をコピーした仮のテンプレートを用意 -->
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
