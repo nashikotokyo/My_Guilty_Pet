@@ -106,7 +106,7 @@
         templates: [
 					{id:0, img:'/assets/images/templates/wanted_1.png'},
 					{id:1, img:'/assets/images/templates/newspaper_1.png'},
-					{id:2, img:'/assets/images/templates/test2_1200x630.png'}
+					{id:2, img:'/assets/images/templates/breaking_news_1.png'}
 				],
 		  	swiperOptionTop: {
 		  	  loop: true,
