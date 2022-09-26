@@ -15,7 +15,7 @@
           ref="cropper"
           :src="imgSrc"
           :auto-crop-area="0.5"
-          :aspect-ratio="1 / 1"
+          :aspect-ratio="53 / 33"
         />
         <div class="text-end">
           <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
@@ -23,21 +23,22 @@
       </div>
       <div class="mt-3" v-show="cropImg">
         <div class="form-group mt-1" >
-          <label for="pet_name">ペットの名前</label>
+          <label for="pet_name">・ペットの名前を入力</label>
           <input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
           <div class="text-end">
             <button @click="drawPetName" class="btn btn-warning mt-3">合成</button>
           </div>
         </div>
         <div class="form-group mt-1">
-          <label for="crime_name">犯行内容(○○の罪)</label>
-          <input type="text" class="form-control" id="crime_name" placeholder="脱走罪・高級バッグ破壊罪・可愛すぎる罪など"></input>
+          <label for="crime_name">・犯行内容・罪名を入力</label>
+					<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
+          <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪"></input>
           <div class="text-end">
             <button @click="drawCrimeName" class="btn btn-warning mt-3">合成</button>
           </div> 
         </div>
         <div class="form-group  mt-1">
-          <label for="bounty">懸賞金額</label>
+          <label for="bounty">・懸賞金額を入力</label>
           <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000"></input>
           <div class="text-end">
             <button @click="drawBounty" class="btn btn-warning mt-3">合成</button>
@@ -107,7 +108,7 @@
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
 					// 描画の位置を設定
-					ctx.drawImage(croppedImg, 140, 170, 400, 400);
+					ctx.drawImage(croppedImg, 70, 200, 530, 330);
         }
 			},
 			drawPetName(){
@@ -118,36 +119,36 @@
 				ctx.clearRect(0, 0, 1200, 300);
 				//文字のデザインを設定
 				ctx.font = '900 70px arial black';
-				ctx.fillStyle = '#212529';
+				ctx.fillStyle = '#683b15';
 				ctx.textAlign = 'center'
 				//描画の位置を設定
-				ctx.fillText(petName.value, 830, 280, 450);
+				ctx.fillText(petName.value, 890, 260, 470);
 			},
 			drawCrimeName(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
 				const crimeName = document.querySelector("#crime_name");
 				//消去の位置を設定
-				ctx.clearRect(0, 300, 1200, 150);
+				ctx.clearRect(0, 300, 1200, 130);
 				//文字のデザインを設定
 				ctx.font = '900 70px arial black';
-				ctx.fillStyle = '#212529';
+				ctx.fillStyle = '#683b15';
 				ctx.textAlign = 'center'
 				//描画の位置を設定
-				ctx.fillText(crimeName.value, 830, 410, 450);
+				ctx.fillText(crimeName.value, 890, 375, 470);
 			},
 			drawBounty(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
 				const bounty = document.querySelector("#bounty");
 				//消去の位置を設定
-				ctx.clearRect(0, 450, 1200, 150);
+				ctx.clearRect(0, 430, 1200, 130);
 				//文字のデザインを設定
 				ctx.font = '900 70px arial black';
-				ctx.fillStyle = '#212529';
+				ctx.fillStyle = '#683b15';
 				ctx.textAlign = 'center'
 				//描画の位置を設定
-				ctx.fillText(bounty.value, 830, 540, 450);
+				ctx.fillText(bounty.value, 890, 495, 470);
 			},
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する
