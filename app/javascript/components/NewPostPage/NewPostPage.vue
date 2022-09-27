@@ -43,6 +43,7 @@
 				<Template2 v-if="selectedSlide === 2" v-model="activePart"></Template2>
 				<Template3 v-if="selectedSlide === 3" v-model="activePart"></Template3>
 				<Template4 v-if="selectedSlide === 4" v-model="activePart"></Template4>
+				<Template5 v-if="selectedSlide === 5" v-model="activePart"></Template5>
         <!-- Create Image END -->
 
 				<!-- New Post START -->
@@ -94,6 +95,7 @@
 	import Template2 from "./Template2.vue";
 	import Template3 from "./Template3.vue";
 	import Template4 from "./Template4.vue";
+	import Template5 from "./Template5.vue";
 
 	export default {
 		components: {
@@ -104,6 +106,7 @@
 			Template2,
 			Template3,
 			Template4,
+			Template5,
     },
     data: function () {
       return {
@@ -115,10 +118,11 @@
 					{id:2, img:'/assets/images/templates/breaking_news_1.png'},
 					{id:3, img:'/assets/images/templates/wanted_2.png'},
 					{id:4, img:'/assets/images/templates/110ban_1.png'},
+					{id:5, img:'/assets/images/templates/wanted_3.png'},
 				],
 		  	swiperOptionTop: {
 		  	  loop: true,
-			    loopedSlides: 5,
+			    loopedSlides: 6,
 			    pagination: {
 		  			el: '.swiper-pagination',
 			  		clickable: true
@@ -126,9 +130,9 @@
 	    	},
 		  	swiperOptionThumbs: {
 		  	  loop: true,
-		    	loopedSlides: 5,
+		    	loopedSlides: 6,
 					centeredSlides: true,
-	    		slidesPerView: 5,
+	    		slidesPerView: 6,
 					touchRatio: 0.2,
 	    		slideToClickedSlide: true
 	    	}		
