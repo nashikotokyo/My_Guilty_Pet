@@ -2,11 +2,11 @@
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
-      <h3>画像と文字の合成</h3>
+      <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="card-body d-flex flex-column justify-content-center">
-      <div class="form-group">
+    <div class="p-0 card-body d-flex flex-column justify-content-center">
+      <div class="form-group mx-2 mt-3">
         <label for="pet_image">・ペットの画像を選択</label>
         <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
       </div>
@@ -18,21 +18,21 @@
           :aspect-ratio="73 / 32"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
-      <div class="mt-3">
-        <label for="canvas-wrapper">合成イメージ</label>
-        <div class="canvas-wrapper mt-3">
+      <div class="mt-2">
+        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+        <div class="canvas-wrapper">
           <canvas id="image_canvas" width="1200" height="630"></canvas>
           <canvas id="text_canvas" width="1200" height="630"></canvas>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
+						<button @click="backTo1st" class="btn btn-warning">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
 					</div>					          
         </div>
       </div>

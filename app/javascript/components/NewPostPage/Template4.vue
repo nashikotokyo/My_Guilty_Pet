@@ -2,12 +2,12 @@
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
-      <h3>画像と文字の合成</h3>
+      <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="card-body d-flex flex-column justify-content-center">
-      <div class="form-group">
-        <label for="pet_image">ペットの画像を選択</label>
+    <div class="p-0 card-body d-flex flex-column justify-content-center">
+      <div class="form-group mx-2 mt-3">
+        <label for="pet_image">・ペットの画像を選択</label>
         <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
       </div>
       <div v-show="imgSrc" class="mt-3">
@@ -18,45 +18,45 @@
           :aspect-ratio="106 / 94"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
-      <div class="mt-3" v-show="cropImg">
-        <div class="form-group mt-1" >
+      <div class="mt-1 mx-2" v-show="cropImg">
+        <div class="form-group" >
           <label for="case_name">・事件名や罪名を入力</label>
-          <p class="mb-2 small">(例)〇〇事件犯人/〇〇の罪/〇〇の容疑</p>
+          <p class="mb-0 small">(例)〇〇事件犯人/〇〇の罪/〇〇の容疑</p>
           <input type="text" class="form-control" id="case_name" placeholder="高級バッグ破壊事件犯人"></input>
           <div class="text-end">
-            <button @click="drawCaseName" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawCaseName" class="btn btn-warning mt-1">合成</button>
           </div>
         </div>
-        <div class="form-group mt-1">
+        <div class="form-group">
           <label for="feature">・特徴を入力</label>
           <input type="text" class="form-control" id="feature" placeholder="短い足に長い胴"></input>
           <div class="text-end">
-            <button @click="drawFeature" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawFeature" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
-        <div class="form-group  mt-1">
+        <div class="form-group">
           <label for="bounty">・報奨金額を入力</label>
           <input type="text" class="form-control" id="bounty" placeholder="¥100,000"></input>
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-warning mt-3">合成</button>
-          </div> 
+            <button @click="drawBounty" class="btn btn-warning mt-1">合成</button>
+          </div>
         </div>
       </div>
-      <div class="mt-3">
-        <label for="canvas-wrapper">合成イメージ</label>
-        <div class="canvas-wrapper mt-3">
+      <div class="mt-2">
+        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+        <div class="canvas-wrapper">
           <canvas id="image_canvas" width="1200" height="630"></canvas>
           <canvas id="text_canvas" width="1200" height="630"></canvas>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
+						<button @click="backTo1st" class="btn btn-warning">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
 					</div>					          
         </div>
       </div>

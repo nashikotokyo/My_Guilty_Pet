@@ -2,12 +2,12 @@
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
-      <h3>画像と文字の合成</h3>
+      <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="card-body d-flex flex-column justify-content-center">
-      <div class="form-group">
-        <label for="pet_image">ペットの画像を選択</label>
+    <div class="p-0 card-body d-flex flex-column justify-content-center">
+      <div class="form-group mx-2 mt-3">
+        <label for="pet_image">・ペットの画像を選択</label>
         <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
       </div>
       <div v-show="imgSrc" class="mt-3">
@@ -18,56 +18,55 @@
           :aspect-ratio="3 / 2"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
-      <div class="mt-3" v-show="cropImg">
-				<p class="mb-0 mt-2">・新聞の見出しを入力</p>
-				<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
-        <div class="form-group mt-1" >
-          <label for="headline1">見出し(上部)</label>
+      <div class="mt-1 mx-2" v-show="cropImg">
+        <div class="form-group" >
+          <label for="headline1">・新聞の見出しを入力</label>
+					<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
           <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕"></input>
           <div class="text-end">
-            <button @click="drawHeadline1" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawHeadline1" class="btn btn-warning mt-1">合成</button>
           </div>
         </div>
 				<p class="mb-0 mt-2">・犯行内容や犯行理由など詳細を入力</p>
 				<p class="mb-0 small">(例)〇〇を破壊した罪/犯行理由は〇〇からと供述</p>
-				<p class="mb-2 small">※各列最大6文字(スペースも認識されます)</p>
+				<p class="mb-0 small">※各列最大6文字(スペースも認識されます)</p>
         <div class="form-group mt-1">
-          <label for="detail1">詳細(1列目)</label>
+          <label for="detail1">1列目</label>
           <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを"></input>
           <div class="text-end">
-            <button @click="drawDetail1" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawDetail1" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
-        <div class="form-group  mt-1">
-          <label for="detail2">詳細(2列目)</label>
+        <div class="form-group">
+          <label for="detail2">2列目</label>
           <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ"></input>
           <div class="text-end">
-            <button @click="drawDetail2" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawDetail2" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
-				<div class="form-group  mt-1">
-          <label for="detail3">詳細(3列目)</label>
+				<div class="form-group">
+          <label for="detail3">3列目</label>
           <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪"></input>
           <div class="text-end">
-            <button @click="drawDetail3" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawDetail3" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
       </div>
-      <div class="mt-3">
-        <label for="canvas-wrapper">合成イメージ</label>
-        <div class="canvas-wrapper mt-3">
+      <div class="mt-2">
+        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+        <div class="canvas-wrapper">
           <canvas id="image_canvas" width="1200" height="630"></canvas>
           <canvas id="text_canvas" width="1200" height="630"></canvas>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
+						<button @click="backTo1st" class="btn btn-warning">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
 					</div>					          
         </div>
       </div>

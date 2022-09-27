@@ -10,10 +10,10 @@
 				<div v-show="activePart == 1" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
-						<h3>テンプレートの選択</h3>
+						<h3 class="mb-0">テンプレートの選択</h3>
 					</div>
 					<!-- Body -->
-					<div class="card-body d-flex flex-column justify-content-center">
+					<div class="card-body p-0 d-flex flex-column justify-content-center">
 						<!-- Template Slider-->
 						<div class="thumb-example">
 							<!-- swiper1 -->
@@ -30,8 +30,8 @@
 								</swiper-slide>
 							</swiper>
 						</div>
-						<div class="text-end">
-							<input type="button" value="選択" class="btn btn-warning mt-3" @click="showTemplate">
+						<div class="p-2 d-flex align-items-center justify-content-end">
+							<input type="button" value="選択" class="btn btn-warning" @click="showTemplate">
 						</div>
 					</div>
 				</div>
@@ -51,10 +51,10 @@
 				<div v-show="activePart == 3" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
-						<h3>画像の投稿</h3>
+						<h3 class="mb-0">画像の投稿</h3>
 					</div>
 					<!-- Body -->
-					<div class="card-body d-flex flex-column justify-content-center">
+					<div class="p-0 card-body d-flex flex-column justify-content-center">
 						<canvas id="combined_canvas" width="1200" height="630"></canvas>
 						<!-- Form START -->
 						<form action="/posts" accept-charset="UTF-8" method="post">
@@ -63,16 +63,16 @@
 							<!-- 最終イメージをhiddenで設定 -->
 							<input type="hidden" id="post_image" name="post[image]" value="" />
 							<!-- キャプション -->
-							<div class="form-group">
+							<div class="form-group mt-2 mx-2">
 								<label for="post_body">キャプション(任意)</label>
 								<textarea class="form-control" name="post[body]" id="post_body"></textarea>
 							</div>
-							<div class="d-flex justify-content-between">
+							<div class="p-2 d-flex align-items-center justify-content-between">
 				      	<div>
-						      <button type="button" @click="backTo2nd" class="btn btn-warning mt-3">戻る</button>
+						      <button type="button" @click="backTo2nd" class="btn btn-warning">戻る</button>
 								</div>
           		  <div>
-							  	<button type="submit" class="btn btn-warning mt-3" data-disable-with="投稿する">投稿</button>
+							  	<button type="submit" class="btn btn-warning" data-disable-with="投稿する">投稿</button>
 						  	</div>
 							</div>
 						</form>
