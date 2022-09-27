@@ -2,12 +2,12 @@
   <div v-show="this.value == 2" class="card rounded-3">
     <!-- Title -->
     <div class="card-header text-center">
-      <h3>画像と文字の合成(Template0)</h3>
+      <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="card-body d-flex flex-column justify-content-center">
-      <div class="form-group">
-        <label for="pet_image">ペットの画像を選択</label>
+    <div class="p-0 card-body d-flex flex-column justify-content-center">
+      <div class="form-group mx-2 mt-3">
+        <label for="pet_image">・ペットの画像を選択</label>
         <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
       </div>
       <div v-show="imgSrc" class="mt-3">
@@ -15,48 +15,49 @@
           ref="cropper"
           :src="imgSrc"
           :auto-crop-area="0.5"
-          :aspect-ratio="1 / 1"
+          :aspect-ratio="53 / 33"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-3" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
-      <div class="mt-3" v-show="cropImg">
-        <div class="form-group mt-1" >
-          <label for="pet_name">ペットの名前</label>
+      <div class="mt-1 mx-2" v-show="cropImg">
+        <div class="form-group" >
+          <label for="pet_name">・ペットの名前を入力</label>
           <input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
           <div class="text-end">
-            <button @click="drawPetName" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawPetName" class="btn btn-warning mt-1">合成</button>
           </div>
         </div>
-        <div class="form-group mt-1">
-          <label for="crime_name">犯行内容・罪状</label>
-          <input type="text" class="form-control" id="crime_name" placeholder="脱走罪・ブランドバッグ破壊罪・可愛すぎ罪など"></input>
+        <div class="form-group">
+          <label for="crime_name">・犯行内容・罪名を入力</label>
+					<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
+          <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪"></input>
           <div class="text-end">
-            <button @click="drawCrimeName" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawCrimeName" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
-        <div class="form-group  mt-1">
-          <label for="bounty">懸賞金額</label>
-          <input type="text" class="form-control" id="bounty" placeholder="¥30,000,000"></input>
+        <div class="form-group">
+          <label for="bounty">・懸賞金額を入力</label>
+          <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000"></input>
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-warning mt-3">合成</button>
+            <button @click="drawBounty" class="btn btn-warning mt-1">合成</button>
           </div> 
         </div>
       </div>
-      <div class="mt-3">
-        <label for="canvas-wrapper">合成イメージ</label>
-        <div class="canvas-wrapper mt-3">
+      <div class="mt-2">
+        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+        <div class="canvas-wrapper">
           <canvas id="image_canvas" width="1200" height="630"></canvas>
           <canvas id="text_canvas" width="1200" height="630"></canvas>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning mt-3">戻る</button>
+						<button @click="backTo1st" class="btn btn-warning">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning mt-3">次へ</button>
-					</div>					          
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
+					</div>
         </div>
       </div>
     </div>      
@@ -106,45 +107,48 @@
 				croppedImg.onload = () =>{
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
-					// 描画の位置は仮設定
-					ctx.drawImage(croppedImg, 70, 120, 500, 500);
+					// 描画の位置を設定
+					ctx.drawImage(croppedImg, 70, 200, 530, 330);
         }
 			},
 			drawPetName(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
 				const petName = document.querySelector("#pet_name");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 0, 1200, 280);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(petName.value, 700, 250, 370);
+				//消去の位置を設定
+				ctx.clearRect(0, 0, 1200, 300);
+				//文字のデザインを設定
+				ctx.font = '900 70px arial black';
+				ctx.fillStyle = '#683b15';
+				ctx.textAlign = 'center'
+				//描画の位置を設定
+				ctx.fillText(petName.value, 890, 260, 470);
 			},
 			drawCrimeName(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
 				const crimeName = document.querySelector("#crime_name");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 300, 1200, 150);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(crimeName.value, 700, 400, 370);
+				//消去の位置を設定
+				ctx.clearRect(0, 300, 1200, 130);
+				//文字のデザインを設定
+				ctx.font = '900 70px arial black';
+				ctx.fillStyle = '#683b15';
+				ctx.textAlign = 'center'
+				//描画の位置を設定
+				ctx.fillText(crimeName.value, 890, 375, 470);
 			},
 			drawBounty(){
 				const canvas = document.querySelector("#text_canvas");
 				const ctx = canvas.getContext('2d');
 				const bounty = document.querySelector("#bounty");
-				//消去の位置は仮設定
-				ctx.clearRect(0, 450, 1200, 150);
-				//スタイルは仮設定
-				ctx.font = '70px serif';
-				ctx.fillStyle = '#404040';
-				//描画の位置は仮設定
-				ctx.fillText(bounty.value, 700, 550, 370);
+				//消去の位置を設定
+				ctx.clearRect(0, 430, 1200, 130);
+				//文字のデザインを設定
+				ctx.font = '900 70px arial black';
+				ctx.fillStyle = '#683b15';
+				ctx.textAlign = 'center'
+				//描画の位置を設定
+				ctx.fillText(bounty.value, 890, 495, 470);
 			},
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する

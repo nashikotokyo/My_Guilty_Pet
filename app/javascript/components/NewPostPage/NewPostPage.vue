@@ -10,10 +10,10 @@
 				<div v-show="activePart == 1" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
-						<h3>テンプレートの選択</h3>
+						<h3 class="mb-0">テンプレートの選択</h3>
 					</div>
 					<!-- Body -->
-					<div class="card-body d-flex flex-column justify-content-center">
+					<div class="card-body p-0 d-flex flex-column justify-content-center">
 						<!-- Template Slider-->
 						<div class="thumb-example">
 							<!-- swiper1 -->
@@ -30,27 +30,31 @@
 								</swiper-slide>
 							</swiper>
 						</div>
-						<div class="text-end">
-							<input type="button" value="選択" class="btn btn-warning mt-3" @click="showTemplate">
+						<div class="p-2 d-flex align-items-center justify-content-end">
+							<input type="button" value="選択" class="btn btn-warning" @click="showTemplate">
 						</div>
 					</div>
 				</div>
 				<!-- Templates Slider END -->
 
 				<!-- Create Image START -->
-				<Template0 v-if="selectedSlide === 0" v-model="activePart" ></Template0>
+				<Template0 v-if="selectedSlide === 0" v-model="activePart"></Template0>
 				<Template1 v-if="selectedSlide === 1" v-model="activePart"></Template1>
 				<Template2 v-if="selectedSlide === 2" v-model="activePart"></Template2>
+				<Template3 v-if="selectedSlide === 3" v-model="activePart"></Template3>
+				<Template4 v-if="selectedSlide === 4" v-model="activePart"></Template4>
+				<Template5 v-if="selectedSlide === 5" v-model="activePart"></Template5>
+				<Template6 v-if="selectedSlide === 6" v-model="activePart"></Template6>
         <!-- Create Image END -->
 
 				<!-- New Post START -->
 				<div v-show="activePart == 3" class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
-						<h3>画像の投稿</h3>
+						<h3 class="mb-0">画像の投稿</h3>
 					</div>
 					<!-- Body -->
-					<div class="card-body d-flex flex-column justify-content-center">
+					<div class="p-0 card-body d-flex flex-column justify-content-center">
 						<canvas id="combined_canvas" width="1200" height="630"></canvas>
 						<!-- Form START -->
 						<form action="/posts" accept-charset="UTF-8" method="post">
@@ -59,16 +63,16 @@
 							<!-- 最終イメージをhiddenで設定 -->
 							<input type="hidden" id="post_image" name="post[image]" value="" />
 							<!-- キャプション -->
-							<div class="form-group">
+							<div class="form-group mt-2 mx-2">
 								<label for="post_body">キャプション(任意)</label>
 								<textarea class="form-control" name="post[body]" id="post_body"></textarea>
 							</div>
-							<div class="d-flex justify-content-between">
+							<div class="p-2 d-flex align-items-center justify-content-between">
 				      	<div>
-						      <button type="button" @click="backTo2nd" class="btn btn-warning mt-3">戻る</button>
+						      <button type="button" @click="backTo2nd" class="btn btn-warning">戻る</button>
 								</div>
           		  <div>
-							  	<button type="submit" class="btn btn-warning mt-3" data-disable-with="投稿する">投稿</button>
+							  	<button type="submit" class="btn btn-warning" data-disable-with="投稿する">投稿</button>
 						  	</div>
 							</div>
 						</form>
@@ -90,6 +94,10 @@
 	import Template0 from "./Template0.vue";
 	import Template1 from "./Template1.vue";
 	import Template2 from "./Template2.vue";
+	import Template3 from "./Template3.vue";
+	import Template4 from "./Template4.vue";
+	import Template5 from "./Template5.vue";
+	import Template6 from "./Template6.vue";
 
 	export default {
 		components: {
@@ -98,19 +106,27 @@
 			Template0,
 			Template1,
 			Template2,
+			Template3,
+			Template4,
+			Template5,
+			Template6,
     },
     data: function () {
       return {
 				selectedSlide: 0,
 				activePart: 1,
         templates: [
-					{id:0, img:'/assets/images/templates/test0_1200x630.png'},
-					{id:1, img:'/assets/images/templates/test1_1200x630.png'},
-					{id:2, img:'/assets/images/templates/test2_1200x630.png'}
+					{id:0, img:'/assets/images/templates/wanted_1.png'},
+					{id:1, img:'/assets/images/templates/newspaper_1.png'},
+					{id:2, img:'/assets/images/templates/breaking_news_1.png'},
+					{id:3, img:'/assets/images/templates/wanted_2.png'},
+					{id:4, img:'/assets/images/templates/110ban_1.png'},
+					{id:5, img:'/assets/images/templates/wanted_3.png'},
+					{id:6, img:'/assets/images/templates/wanted_4.png'},
 				],
 		  	swiperOptionTop: {
 		  	  loop: true,
-			    loopedSlides: 3,
+			    loopedSlides: 7,
 			    pagination: {
 		  			el: '.swiper-pagination',
 			  		clickable: true
@@ -118,9 +134,9 @@
 	    	},
 		  	swiperOptionThumbs: {
 		  	  loop: true,
-		    	loopedSlides: 3,
+		    	loopedSlides: 7,
 					centeredSlides: true,
-	    		slidesPerView: 3,
+	    		slidesPerView: 7,
 					touchRatio: 0.2,
 	    		slideToClickedSlide: true
 	    	}		
@@ -163,7 +179,7 @@
 <style lang="scss" scoped>
   .thumb-example {
     height: auto;
-    background-color: black;
+    background-color: white;
   }
   .swiper {
     .swiper-slide {

@@ -15,44 +15,10 @@
           ref="cropper"
           :src="imgSrc"
           :auto-crop-area="0.5"
-          :aspect-ratio="3 / 2"
+          :aspect-ratio="36 / 19"
         />
         <div class="text-end">
           <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
-        </div>
-      </div>
-      <div class="mt-1 mx-2" v-show="cropImg">
-        <div class="form-group" >
-          <label for="headline1">・新聞の見出しを入力</label>
-					<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
-          <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕"></input>
-          <div class="text-end">
-            <button @click="drawHeadline1" class="btn btn-warning mt-1">合成</button>
-          </div>
-        </div>
-				<p class="mb-0 mt-2">・犯行内容や犯行理由など詳細を入力</p>
-				<p class="mb-0 small">(例)〇〇を破壊した罪/犯行理由は〇〇からと供述</p>
-				<p class="mb-0 small">※各列最大6文字(スペースも認識されます)</p>
-        <div class="form-group mt-1">
-          <label for="detail1">1列目</label>
-          <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを"></input>
-          <div class="text-end">
-            <button @click="drawDetail1" class="btn btn-warning mt-1">合成</button>
-          </div> 
-        </div>
-        <div class="form-group">
-          <label for="detail2">2列目</label>
-          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ"></input>
-          <div class="text-end">
-            <button @click="drawDetail2" class="btn btn-warning mt-1">合成</button>
-          </div> 
-        </div>
-				<div class="form-group">
-          <label for="detail3">3列目</label>
-          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪"></input>
-          <div class="text-end">
-            <button @click="drawDetail3" class="btn btn-warning mt-1">合成</button>
-          </div> 
         </div>
       </div>
       <div class="mt-2">
@@ -117,68 +83,10 @@
 				croppedImg.onload = () =>{
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
-					// 描画の位置を設定
-					ctx.drawImage(croppedImg, 70, 190, 600, 400);
+					// 描画の位置は仮設定
+					ctx.drawImage(croppedImg, 240, 148, 720, 380);
         }
-			},
-			drawHeadline1(){
-				const canvas = document.querySelector("#text_canvas");
-				const ctx = canvas.getContext('2d');
-				const headline1 = document.querySelector("#headline1");
-				//消去の位置を設定
-				ctx.clearRect(0, 0, 1200, 160);
-				//文字のデザインを設定
-				ctx.font = '900 90px sans-serif';
-				ctx.fillStyle = '#ffffff';
-				ctx.textAlign = 'center'
-				//描画の位置を設定
-				ctx.fillText(headline1.value, 532, 140, 900);
-			},
-			drawDetail1(){
-				const canvas = document.querySelector("#text_canvas");
-				const ctx = canvas.getContext('2d');
-				const detail1 = document.querySelector("#detail1");
-				//消去の位置を設定
-				ctx.clearRect(900, 180, 85, 450);
-				//文字のデザインを設定
-				ctx.font = '900 70px serif';
-				ctx.fillStyle = '#14191e';
-				//描画の位置を設定(縦書きで表示)
-				this.tategaki(ctx, detail1.value, 950, 245);
-			},
-			drawDetail2(){
-				const canvas = document.querySelector("#text_canvas");
-				const ctx = canvas.getContext('2d');
-				const detail2 = document.querySelector("#detail2");
-				//消去の位置を設定
-				ctx.clearRect(800, 180, 85, 450);
-				//文字のデザインを設定
-				ctx.font = '900 70px serif';
-				ctx.fillStyle = '#14191e';
-				//描画の位置を設定(縦書きで表示)
-				this.tategaki(ctx, detail2.value, 850, 245);
-			},
-			drawDetail3(){
-				const canvas = document.querySelector("#text_canvas");
-				const ctx = canvas.getContext('2d');
-				const detail3 = document.querySelector("#detail3");
-				//消去の位置を設定
-				ctx.clearRect(700, 180, 85, 450);
-				//文字のデザインを設定
-				ctx.font = '900 70px serif';
-				ctx.fillStyle = '#14191e';
-				//描画の位置を設定(縦書きで表示)
-				this.tategaki(ctx, detail3.value, 750, 245);
-			},
-			tategaki(ctx, text, x, y){
-				const textList = text.split('\n');
-				const lineHeight = ctx.measureText("あ").width;
-				textList.forEach(function(elm, i) {
-					Array.prototype.forEach.call(elm, function(ch, j) {
-						ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
-					});
-				});
-			},
+		  },
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する
 				const canvas = document.querySelector(base);
