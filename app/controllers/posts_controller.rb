@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.save!
-    redirect_to posts_path, success: '投稿しました！'
+    redirect_to tweet_post_path(@post), success: '投稿しました！'
   end
 
   def destroy
@@ -25,6 +25,9 @@ class PostsController < ApplicationController
   def ranking
     @top10_posts = Post.includes(:user).find(Like.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
     @comment = Comment.new
+  end
+
+  def tweet
   end
 
   private
