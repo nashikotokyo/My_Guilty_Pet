@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create destroy]
+  before_action :require_login, only: %i[new create destroy tweet]
 
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc)
