@@ -18,7 +18,7 @@
           :aspect-ratio="3 / 2"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
       <div class="mt-1 mx-2" v-show="cropImg">
@@ -27,7 +27,7 @@
 					<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
           <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕"></input>
           <div class="text-end">
-            <button @click="drawHeadline1" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawHeadline1" class="btn btn-purple mt-1">合成</button>
           </div>
         </div>
 				<p class="mb-0 mt-2">・犯行内容や犯行理由など詳細を入力</p>
@@ -37,21 +37,21 @@
           <label for="detail1">1列目</label>
           <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを"></input>
           <div class="text-end">
-            <button @click="drawDetail1" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawDetail1" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="detail2">2列目</label>
           <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ"></input>
           <div class="text-end">
-            <button @click="drawDetail2" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawDetail2" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
 				<div class="form-group">
           <label for="detail3">3列目</label>
           <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪"></input>
           <div class="text-end">
-            <button @click="drawDetail3" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawDetail3" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
       </div>
@@ -63,10 +63,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning">戻る</button>
+						<button @click="backTo1st" class="btn btn-purple">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
 					</div>					          
         </div>
       </div>

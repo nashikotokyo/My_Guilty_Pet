@@ -10,11 +10,12 @@
 #                         auth_at_provider GET    /oauth/:provider(.:format)                                                                        oauths#oauth
 #                                    login GET    /login(.:format)                                                                                  user_sessions#new
 #                                   logout DELETE /logout(.:format)                                                                                 user_sessions#destroy
+#                            ranking_posts GET    /posts/ranking(.:format)                                                                          posts#ranking
+#                               tweet_post GET    /posts/:id/tweet(.:format)                                                                        posts#tweet
 #                            post_comments POST   /posts/:post_id/comments(.:format)                                                                comments#create
 #                                  comment DELETE /comments/:id(.:format)                                                                           comments#destroy
 #                               post_likes POST   /posts/:post_id/likes(.:format)                                                                   likes#create
 #                                     like DELETE /likes/:id(.:format)                                                                              likes#destroy
-#                            ranking_posts GET    /posts/ranking(.:format)                                                                          posts#ranking
 #                                    posts GET    /posts(.:format)                                                                                  posts#index
 #                                          POST   /posts(.:format)                                                                                  posts#create
 #                                 new_post GET    /posts/new(.:format)                                                                              posts#new
@@ -65,6 +66,9 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create index destroy], shallow: true do
     collection do
       get :ranking
+    end
+    member do
+      get :tweet
     end
     resources :comments, only: %i[create destroy]
     resources :likes, only: %i[create destroy]

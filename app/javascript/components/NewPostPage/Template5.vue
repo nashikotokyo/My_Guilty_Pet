@@ -18,7 +18,7 @@
           :aspect-ratio="73 / 32"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
       <div class="mt-2">
@@ -29,10 +29,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning">戻る</button>
+						<button @click="backTo1st" class="btn btn-purple">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
 					</div>					          
         </div>
       </div>

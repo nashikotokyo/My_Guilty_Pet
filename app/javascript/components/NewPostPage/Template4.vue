@@ -18,7 +18,7 @@
           :aspect-ratio="106 / 94"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
       <div class="mt-1 mx-2" v-show="cropImg">
@@ -27,21 +27,21 @@
           <p class="mb-0 small">(例)〇〇事件犯人/〇〇の罪/〇〇の容疑</p>
           <input type="text" class="form-control" id="case_name" placeholder="高級バッグ破壊事件犯人"></input>
           <div class="text-end">
-            <button @click="drawCaseName" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawCaseName" class="btn btn-purple mt-1">合成</button>
           </div>
         </div>
         <div class="form-group">
           <label for="feature">・特徴を入力</label>
           <input type="text" class="form-control" id="feature" placeholder="短い足に長い胴"></input>
           <div class="text-end">
-            <button @click="drawFeature" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawFeature" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="bounty">・報奨金額を入力</label>
           <input type="text" class="form-control" id="bounty" placeholder="¥100,000"></input>
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawBounty" class="btn btn-purple mt-1">合成</button>
           </div>
         </div>
       </div>
@@ -53,10 +53,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning">戻る</button>
+						<button @click="backTo1st" class="btn btn-purple">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
 					</div>					          
         </div>
       </div>

@@ -1,0 +1,15 @@
+meta:
+  site: MyGuiltyPet
+  title: ペットの画像をテンプレートに合成してみよう！
+  charset: utf-8
+  description: いたずら盛りの罪深きペットの画像を犯罪者に見立てたテンプレートに合成しておもしろ可愛く投稿・Twitterでシェアできるアプリです。
+  keywords:
+    - MyGuiltyPet
+    - 画像合成
+    - 画像投稿
+    - テンプレート
+    - ペット
+
+  og:
+    type: website
+    image_path: media/images/ogp.png
