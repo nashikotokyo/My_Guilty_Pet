@@ -28,6 +28,10 @@ class PostsController < ApplicationController
   end
 
   def tweet
+    @post = Post.find(params[:id])
+    if !current_user.own?(@post)
+      redirect_to posts_path
+    end
   end
 
   private

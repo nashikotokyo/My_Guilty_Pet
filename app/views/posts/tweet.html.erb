@@ -9,12 +9,19 @@
 			<div class="card rounded-3">
 					<!-- Title -->
 					<div class="card-header text-center">
-						<h3 class="mb-0">Twitterで共有</h3>
+						<h3 class="mb-0">Twitterで投稿をシェアしてみよう！</h3>
 					</div>
 					<!-- Body -->
-					<div class="card-body p-0 d-flex flex-column justify-content-center">
-            Twitterで共有するボタン
-            共有しないボタン
+					<div class="card-body p-0">
+            <div class="text-center">
+              <%= link_to "https://twitter.com/share?url=#{request.base_url}#{user_path(@post.user)}?post_id=#{@post.id}&text=#{@post.body}%0a", title: 'Twitter', target: '_blank', class: 'btn btn-twitter mt-4 mb-3' do %>
+                <i class="fab fa-twitter me-1"></i>
+                Twitterでシェア
+              <% end %>
+            </div>
+            <div class="text-center">
+              <%= link_to '投稿一覧へ', posts_path, class: 'btn btn-gray mb-4' %>
+            </div>
 				  </div>
 				</div>
     </div>
