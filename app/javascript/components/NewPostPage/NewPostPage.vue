@@ -31,7 +31,7 @@
 							</swiper>
 						</div>
 						<div class="p-2 d-flex align-items-center justify-content-end">
-							<input type="button" value="選択" class="btn btn-warning" @click="showTemplate">
+							<input type="button" value="選択" class="btn btn-purple" @click="showTemplate">
 						</div>
 					</div>
 				</div>
@@ -69,10 +69,10 @@
 							</div>
 							<div class="p-2 d-flex align-items-center justify-content-between">
 				      	<div>
-						      <button type="button" @click="backTo2nd" class="btn btn-warning">戻る</button>
+						      <button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
 								</div>
           		  <div>
-							  	<button type="submit" class="btn btn-warning" data-disable-with="投稿する">投稿</button>
+							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿する">投稿</button>
 						  	</div>
 							</div>
 						</form>

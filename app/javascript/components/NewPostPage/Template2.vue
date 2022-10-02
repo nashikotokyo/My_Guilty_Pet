@@ -18,7 +18,7 @@
           :aspect-ratio="7 / 4"
         />
         <div class="text-end">
-          <button class="btn btn-warning mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
         </div>
       </div>
       <div class="mt-1 mx-2" v-show="cropImg">
@@ -27,7 +27,7 @@
 					<p class="mb-0 small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
 					<input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕"></input>
           <div class="text-end">
-            <button @click="drawTelop" class="btn btn-warning mt-1">合成</button>
+            <button @click="drawTelop" class="btn btn-purple mt-1">合成</button>
           </div>
         </div>
       </div>
@@ -39,10 +39,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-warning">戻る</button>
+						<button @click="backTo1st" class="btn btn-purple">戻る</button>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-warning">次へ</button>
+						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
 					</div>					          
         </div>
       </div>

@@ -16,10 +16,10 @@
       <div class="row position-relative z-index-1">
         <div class="d-flex justify-content-center">
           <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
-            <%= link_to "使い方", { anchor: "how-to-use" }, class: "btn btn-info" %>
+            <%= link_to "使い方", { anchor: "how-to-use" }, class: "btn btn-purple" %>
           </div>
           <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
-            <%= link_to "ログイン", login_path, class: "btn btn-info" %>
+            <%= link_to "ログイン", login_path, class: "btn btn-purple px-2" %>
           </div>
         </div>
       </div>
@@ -58,90 +58,64 @@
         </div>
       </div>
       <!-- Title END -->
-      <!-- Step1 START -->
-      <div class="row justify-content-center mt-4 mt-sm-6">
+      <div class="row mt-4 mt-sm-6 justify-content-center">
         <div class="col-md-10 col-lg-8">
+          <!-- Step1 START -->
           <div class="row align-items-center">
-            <div class="col-3 col-sm-2 col-lg-3">
+            <div class="col-3 col-sm-2">
               <!-- Image -->
               <%= image_pack_tag "paw1_light.png", class: "light-mode-item" %>
               <%= image_pack_tag "paw1_dark.png", class: "dark-mode-item" %>
             </div>
-            <div class="col-12 col-sm-10 col-lg-9">
-              <div class="ms-4">
-                <!-- Info -->
-                  <p>ログイン画面でTwitter, Google, LINEアカウントのいずれかでログインする</p>
-              </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">ログイン画面でTwitter, Google, LINEアカウントのいずれかでログインする</p>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- Step1 END -->
-      <!-- Step2 START -->
-      <div class="row justify-content-center mt-4 mt-sm-6">
-        <div class="col-md-10 col-lg-8">
-          <div class="row align-items-center">
-            <div class="col-3 col-sm-2 col-lg-3">
+          <!-- Step2 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
               <!-- Image -->
               <%= image_pack_tag "paw2_light.png", class: "light-mode-item" %>
               <%= image_pack_tag "paw2_dark.png", class: "dark-mode-item" %>
             </div>
-            <div class="col-12 col-sm-10 col-lg-9">
-              <div class="ms-4">
-                <!-- Info -->
-                <p>画面下の + ボタンから新規作成画面に進み、好きなテンプレートを選択する</p>
-              </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">画面下の + ボタンから新規作成画面に進み、好きなテンプレートを選択する</p>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- Step2 END -->
-      <!-- Step3 START -->
-      <div class="row justify-content-center mt-4 mt-sm-6">
-        <div class="col-md-10 col-lg-8">
-          <div class="row align-items-center">
-            <div class="col-3 col-sm-2 col-lg-3">
+          <!-- Step3 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
               <!-- Image -->
               <%= image_pack_tag "paw3_light.png", class: "light-mode-item" %>
               <%= image_pack_tag "paw3_dark.png", class: "dark-mode-item" %>
             </div>
-            <div class="col-12 col-sm-10 col-lg-9">
-              <div class="ms-4">
-                <!-- Info -->
-                <p>自分のペットの画像を選択、トリミングしてテンプレートに合成。文字合成が必要なテンプレートでは文字を入力し、合成を完了する</p>
-              </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">自分のペットの画像を選択、トリミングしてテンプレートに合成。文字合成が必要なテンプレートでは文字を入力し、合成を完了する</p>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- STEP3 END -->
-      <!-- STEP4 START-->
-      <div class="row justify-content-center mt-4 mt-sm-6">
-        <div class="col-md-10 col-lg-8">
-          <div class="row align-items-center">
-            <div class="col-3 col-sm-2 col-lg-3">
+          <!-- Step4 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
               <!-- Image -->
               <%= image_pack_tag "paw4_light.png", class: "light-mode-item" %>
               <%= image_pack_tag "paw4_dark.png", class: "dark-mode-item" %>
             </div>
-            <div class="col-12 col-sm-10 col-lg-9">
-              <div class="ms-4">
-                <!-- Info -->
-                  <p>投稿するをクリック！投稿後にTwitterでのシェアも可能。</p>
-              </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">投稿するをクリック！投稿後にTwitterでのシェアも可能。</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- STEP4 END -->
+
       <!-- Button START -->
       <div class="row my-5 my-sm-7">
         <div class="d-flex justify-content-center">
           <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
-            <%= link_to "投稿一覧", posts_path, class: "btn btn-info" %>
-          </div>
-          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
-            <%= link_to "ログイン", login_path, class: "btn btn-info" %>
+            <%= link_to "投稿を見る", posts_path, class: "btn btn-purple" %>
           </div>
         </div>
       </div>
