@@ -22,10 +22,10 @@ module ApplicationHelper
         type: Settings.meta.og.type,
         url: request.original_url,
         image: "#{request.base_url}#{asset_pack_path(Settings.meta.og.image_path)}",
-        locale: 'ja_JP',
+        locale: 'ja_JP'
       },
       twitter: {
-        card: 'summary_large_image',
+        card: 'summary_large_image'
       }
     }
   end
