@@ -22,6 +22,7 @@ require 'capybara/rspec'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+# spec/support/配下のファイルを読み込む設定
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -66,9 +67,11 @@ RSpec.configure do |config|
 
   #rspecのテストコード中でFactory_botのメソッド使用の際、クラス名の指定を省略できる
   config.include FactoryBot::Syntax::Methods
+  # SystemHelperをsystemのspecファイル内で使用できるようにしている
+  config.include SystemHelper, type: :system
 
-   # before(:each) => type: :system（つまりシステムスペック）で書かれたテストの各exampleの前に毎回実行される処理
-   config.before(:each, type: :system) do
+  # before(:each) => type: :system（つまりシステムスペック）で書かれたテストの各exampleの前に毎回実行される処理
+  config.before(:each, type: :system) do
     # driven_by(ドライバの種類, using: 使うブラウザ, screen_size: [XXXX, XXXX], options: オプション={})
     driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
   end
