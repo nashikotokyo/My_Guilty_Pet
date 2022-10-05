@@ -72,7 +72,7 @@
 						      <button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
 								</div>
           		  <div>
-							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿する">投稿</button>
+							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿">投稿</button>
 						  	</div>
 							</div>
 						</form>
