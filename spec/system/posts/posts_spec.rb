@@ -23,7 +23,7 @@ RSpec.describe '投稿', type: :system do
 
       it 'いいねボタンとコメント入力欄が表示されていること' do
         visit posts_path
-        expect(page).to have_css '.like-button'
+        expect(page).to have_css '.before-like-button'
         expect(page).to have_css '.comment-input-form'
       end
 
