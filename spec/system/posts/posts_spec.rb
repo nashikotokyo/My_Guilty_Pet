@@ -102,4 +102,28 @@ RSpec.describe '投稿', type: :system do
       expect(page).not_to have_content post_by_user.body
     end
   end
+
+  describe 'ランキング' do
+    let!(:user) { create(:user) }
+    let!(:post_1) { create(:post) }
+    let!(:post_2) { create(:post) }
+    let!(:post_3) { create(:post) }
+    before do
+      create_list(:like, 3, post: post_1)
+      create_list(:like, 2, post: post_2)
+      create_list(:like, 1, post: post_3)
+      login_as(user)
+    end
+
+    it 'ランキングが正しく表示されていること' do
+      visit ranking_posts_path
+      posts = page.all(".post-partial")
+      expect(posts[0]).to have_content '1位'
+      expect(posts[0]).to have_content post_1.body
+      expect(posts[1]).to have_content '2位'
+      expect(posts[1]).to have_content post_2.body
+      expect(posts[2]).to have_content '3位'
+      expect(posts[2]).to have_content post_3.body
+    end
+  end
 end
