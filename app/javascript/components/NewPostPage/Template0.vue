@@ -26,7 +26,7 @@
           <label for="pet_name">・ペットの名前を入力</label>
           <input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
           <div class="text-end">
-            <button @click="drawPetName" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawPetName" class="btn btn-purple mt-1" id="combine-btn-1">合成</button>
           </div>
         </div>
         <div class="form-group">
@@ -34,14 +34,14 @@
 					<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
           <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪"></input>
           <div class="text-end">
-            <button @click="drawCrimeName" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawCrimeName" class="btn btn-purple mt-1" id="combine-btn-2">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="bounty">・懸賞金額を入力</label>
           <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000"></input>
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawBounty" class="btn btn-purple mt-1" id="combine-btn-3">合成</button>
           </div> 
         </div>
       </div>
