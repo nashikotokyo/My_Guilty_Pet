@@ -73,6 +73,6 @@ RSpec.configure do |config|
   # before(:each) => type: :system（つまりシステムスペック）で書かれたテストの各exampleの前に毎回実行される処理
   config.before(:each, type: :system) do
     # driven_by(ドライバの種類, using: 使うブラウザ, screen_size: [XXXX, XXXX], options: オプション={})
-    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
+    driven_by :selenium, using: :headless_chrome, screen_size: [2000, 2000]
   end
 end
