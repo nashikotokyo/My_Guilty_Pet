@@ -76,6 +76,7 @@ group :test do
   gem 'capybara'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers'
+  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
