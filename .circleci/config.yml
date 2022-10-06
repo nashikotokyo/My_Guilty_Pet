@@ -5,7 +5,7 @@ jobs: # 一連のステップ
   build: # ワークフローを使用しない実行では、エントリポイントとして `build` ジョブが必要です
     parallelism: 1 # 何個並列でCIを走らせるか。無料版だと1しか無理。
     docker: # Docker でステップを実行します
-      - image: cimg/ruby:3.1-node # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
+      - image: cimg/ruby:3.1-browsers # このイメージをすべての `steps` が実行されるプライマリ コンテナとして使用します
         environment: # プライマリ コンテナの環境変数
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
