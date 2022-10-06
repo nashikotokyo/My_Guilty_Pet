@@ -20,14 +20,11 @@ jobs: # 一連のステップ
     steps: # 実行可能コマンドの集合
       - checkout # ソース コードを作業ディレクトリにチェックアウトする特別なステップ
 
-      # Chromeをインストール 
+      # Chromeを起動
       - run:
-          name: install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-            echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
-            apt update -y
-            apt install -y google-chrome-stable
+          name: activate Chrome
+          command: chromedriver
+          background: true
 
       # Bundler のバージョンを指定します
       - run:
