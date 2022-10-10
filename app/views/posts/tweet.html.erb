@@ -14,13 +14,13 @@
 					<!-- Body -->
 					<div class="card-body p-0">
             <div class="text-center">
-              <%= link_to "https://twitter.com/share?url=#{request.base_url}#{user_path(@post.user)}?post_id=#{@post.id}&text=#{@post.body}%0a", title: 'Twitter', target: '_blank', class: 'btn btn-twitter mt-4 mb-3' do %>
+              <%= link_to "https://twitter.com/share?url=#{request.base_url}#{user_path(@post.user)}?post_id=#{@post.id}&text=#{@post.body}%0a", title: 'Twitter', target: '_blank', class: 'btn btn-twitter mt-4 mb-3 text-nowrap' do %>
                 <i class="fab fa-twitter me-1"></i>
                 Twitterでシェア
               <% end %>
             </div>
             <div class="text-center">
-              <%= link_to '投稿一覧へ', posts_path, class: 'btn btn-gray mb-4' %>
+              <%= link_to '投稿一覧へ', posts_path, class: 'btn btn-gray mb-4 text-nowrap' %>
             </div>
 				  </div>
 				</div>
