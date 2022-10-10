@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   get 'login', to: 'user_sessions#new'
   delete 'logout', to: 'user_sessions#destroy'
+  get '/login_as/:user_id', to: 'development/sessions#login_as' # ダミーログイン用
 
   resources :posts, only: %i[new create index destroy], shallow: true do
     collection do
@@ -76,8 +77,4 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i[show]
   resource :profile, only: %i[edit update]
-
-  if Rails.env.test?
-    get '/login_as/:user_id', to: 'development/sessions#login_as'
-  end
 end
