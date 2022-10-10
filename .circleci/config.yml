@@ -85,3 +85,17 @@ jobs: # 一連のステップ
       - run:
           name: Rubocop
           command: bundle exec rubocop
+
+      - run:
+          name: Rspec
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      - store_test_results: # テストサマリー (https://circleci.com/ja/docs/2.0/collect-test-data/) に表示するテスト結果をアップロードします
+          path: test_results
+      - store_artifacts: # テストサマリー。システムスペックが失敗した際のスクショ。
+          path: tmp/screenshots/
