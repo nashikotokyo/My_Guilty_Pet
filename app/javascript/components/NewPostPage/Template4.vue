@@ -25,21 +25,21 @@
         <div class="form-group" >
           <label for="case_name">・事件名や罪名を入力</label>
           <p class="mb-0 small">(例)〇〇事件犯人/〇〇の罪/〇〇の容疑</p>
-          <input type="text" class="form-control" id="case_name" placeholder="高級バッグ破壊事件犯人"></input>
+          <input type="text" class="form-control" id="case_name" placeholder="高級バッグ破壊事件犯人">
           <div class="text-end">
             <button @click="drawCaseName" class="btn btn-purple mt-1">合成</button>
           </div>
         </div>
         <div class="form-group">
           <label for="feature">・特徴を入力</label>
-          <input type="text" class="form-control" id="feature" placeholder="短い足に長い胴"></input>
+          <input type="text" class="form-control" id="feature" placeholder="短い足に長い胴">
           <div class="text-end">
             <button @click="drawFeature" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="bounty">・報奨金額を入力</label>
-          <input type="text" class="form-control" id="bounty" placeholder="¥100,000"></input>
+          <input type="text" class="form-control" id="bounty" placeholder="¥100,000">
           <div class="text-end">
             <button @click="drawBounty" class="btn btn-purple mt-1">合成</button>
           </div>
