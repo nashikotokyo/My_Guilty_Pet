@@ -7,7 +7,8 @@ Header START -->
     <div class="container">
       <!-- App name START -->
       <%= link_to posts_path, class: "navbar-brand" do %>
-        <h3 class="h2">MyGuiltyPet</h3>
+        <%= image_pack_tag "logo_light.png", class: "light-mode-item" %>
+        <%= image_pack_tag "logo_dark.png", class: "dark-mode-item" %>  
       <% end %>
       <!-- App name END -->
       <!-- Responsive navbar toggler -->

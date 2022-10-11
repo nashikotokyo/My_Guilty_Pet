@@ -72,7 +72,7 @@
 						      <button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
 								</div>
           		  <div>
-							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿する">投稿</button>
+							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿">投稿</button>
 						  	</div>
 							</div>
 						</form>
@@ -116,13 +116,13 @@
 				selectedSlide: 0,
 				activePart: 1,
         templates: [
-					{id:0, img:'/assets/images/templates/wanted_1.png'},
-					{id:1, img:'/assets/images/templates/newspaper_1.png'},
-					{id:2, img:'/assets/images/templates/breaking_news_1.png'},
-					{id:3, img:'/assets/images/templates/wanted_2.png'},
-					{id:4, img:'/assets/images/templates/110ban_1.png'},
-					{id:5, img:'/assets/images/templates/wanted_3.png'},
-					{id:6, img:'/assets/images/templates/wanted_4.png'},
+					{id:0, img:'/bootstrap_themes/assets/images/templates/wanted_1.png'},
+					{id:1, img:'/bootstrap_themes/assets/images/templates/newspaper_1.png'},
+					{id:2, img:'/bootstrap_themes/assets/images/templates/breaking_news_1.png'},
+					{id:3, img:'/bootstrap_themes/assets/images/templates/wanted_2.png'},
+					{id:4, img:'/bootstrap_themes/assets/images/templates/110ban_1.png'},
+					{id:5, img:'/bootstrap_themes/assets/images/templates/wanted_3.png'},
+					{id:6, img:'/bootstrap_themes/assets/images/templates/wanted_4.png'},
 				],
 		  	swiperOptionTop: {
 		  	  loop: true,

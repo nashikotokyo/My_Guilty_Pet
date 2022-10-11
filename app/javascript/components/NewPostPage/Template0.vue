@@ -24,24 +24,24 @@
       <div class="mt-1 mx-2" v-show="cropImg">
         <div class="form-group" >
           <label for="pet_name">・ペットの名前を入力</label>
-          <input type="text" class="form-control" id="pet_name" placeholder="ポチ"></input>
+          <input type="text" class="form-control" id="pet_name" placeholder="ポチ">
           <div class="text-end">
-            <button @click="drawPetName" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawPetName" class="btn btn-purple mt-1" id="combine-btn-1">合成</button>
           </div>
         </div>
         <div class="form-group">
           <label for="crime_name">・犯行内容・罪名を入力</label>
 					<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
-          <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪"></input>
+          <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪">
           <div class="text-end">
-            <button @click="drawCrimeName" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawCrimeName" class="btn btn-purple mt-1" id="combine-btn-2">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="bounty">・懸賞金額を入力</label>
-          <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000"></input>
+          <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000">
           <div class="text-end">
-            <button @click="drawBounty" class="btn btn-purple mt-1">合成</button>
+            <button @click="drawBounty" class="btn btn-purple mt-1" id="combine-btn-3">合成</button>
           </div> 
         </div>
       </div>

@@ -25,7 +25,7 @@
         <div class="form-group" >
           <label for="telop">・テロップの内容を入力</label>
 					<p class="mb-0 small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
-					<input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕"></input>
+					<input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕">
           <div class="text-end">
             <button @click="drawTelop" class="btn btn-purple mt-1">合成</button>
           </div>

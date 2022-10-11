@@ -25,7 +25,7 @@
         <div class="form-group" >
           <label for="headline1">・新聞の見出しを入力</label>
 					<p class="mb-0 small">(例)〇〇容疑者現行犯逮捕/禁固〇分求刑/〇〇の容疑で逮捕</p>
-          <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕"></input>
+          <input type="text" class="form-control" id="headline1" placeholder="山田ポチ容疑者現行犯逮捕">
           <div class="text-end">
             <button @click="drawHeadline1" class="btn btn-purple mt-1">合成</button>
           </div>
@@ -35,21 +35,21 @@
 				<p class="mb-0 small">※各列最大6文字(スペースも認識されます)</p>
         <div class="form-group mt-1">
           <label for="detail1">1列目</label>
-          <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを"></input>
+          <input type="text" class="form-control" id="detail1" maxlength="6" placeholder="おやつを">
           <div class="text-end">
             <button @click="drawDetail1" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
         <div class="form-group">
           <label for="detail2">2列目</label>
-          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ"></input>
+          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ">
           <div class="text-end">
             <button @click="drawDetail2" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
 				<div class="form-group">
           <label for="detail3">3列目</label>
-          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪"></input>
+          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪">
           <div class="text-end">
             <button @click="drawDetail3" class="btn btn-purple mt-1">合成</button>
           </div> 
