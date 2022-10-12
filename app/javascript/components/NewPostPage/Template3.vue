@@ -84,7 +84,7 @@
 					const canvas = document.querySelector("#image_canvas");
 					const ctx = canvas.getContext("2d");
 					// 描画の位置は仮設定
-					ctx.drawImage(croppedImg, 205, 174, 808, 403);
+					ctx.drawImage(croppedImg, 204, 174, 809, 403);
         }
 		  },
 			setCompletedImage:async function(base, assets){
