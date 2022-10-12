@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title><%= page_title(yield(:title)) %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= favicon_pack_tag('favicon.png') %>
+    <%= display_meta_tags(default_meta_tags) %>
+
+	  <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+	  <!-- Plugins CSS -->
+	  <link rel="stylesheet" type="text/css" href="/bootstrap_themes/assets/vendor/font-awesome/css/all.min.css">
+
+  	<!-- Theme CSS -->
+	  <link id="style-switch" rel="stylesheet" type="text/css" href="/bootstrap_themes/assets/css/style.css">
+
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <%= render "shared/header" %>
+    <% else %>
+      <%= render "shared/before_login_header" %>
+    <% end %>
+    <%= render "shared/flash_messages" %>
+    <main>
+      <%= yield %>
+      <% if logged_in? %>
+        <%= render "shared/menu_icon" %>
+      <% end %>
+    </main>
+    <%= render "shared/footer" %>
+
+    <!-- =======================
+    JS libraries, plugins and custom scripts -->
+
+    <!-- Bootstrap JS -->
+    <script src="/bootstrap_themes/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Functions -->
+    <script src="/bootstrap_themes/assets/js/functions.js"></script>
+  </body>
+</html>

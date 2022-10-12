@@ -1,0 +1,53 @@
+<% if @post_for_ogp %>
+  <% set_meta_tags og: {image: (request.base_url)+(@post_for_ogp.image.url)} %>
+<% end %>
+<% content_for(:title, t('.title')) %>
+<!-- Container START -->
+<div class="container my-4">
+  <!-- Row START -->
+  <div class="row justify-content-center">
+    <!-- Main content START -->
+    <div class="col-sm-10 col-md-8 col-lg-7">
+      <!-- Card START -->
+      <div class="card my-4">
+        <!-- User Info START -->
+        <div class="card-body text-center">
+          <h1 class="h5"><%= @user.username %></h1>
+          <% if current_user&.id == @user.id%>
+            <%= link_to edit_profile_path, class: 'btn btn-outline-secondary text-nowrap' do %>
+              <i class="fa-solid fa-user-pen"></i>プロフィールを編集
+            <% end %>
+          <% end %>
+        </div>
+        <!-- User Info END -->
+        <!-- Card Footer START -->
+        <div class="card-footer">
+          <% if current_user&.id == @user.id%>
+            <!--   -->
+            <ul class="nav nav-bottom-line align-items-center justify-content-center mb-0 border-0">
+              <li class="nav-item"> <a class="tab nav-link active" href="#"> <%= @user_posts.count%>件の投稿 </a> </li>
+              <li class="nav-item"> <a class="tab nav-link" href="#"> お気に入り </a> </li>
+            </ul>        
+          <% else %>
+            <h6 class="text-center"><%= @user_posts.count%>件の投稿</h6>
+          <% end %>
+        </div>
+        <!-- Card Footer END -->  
+      </div>
+      <!-- Card END -->
+      <!-- User's Posts Start -->
+      <div class="tabbox box-show">
+        <%= render partial: 'posts/post', collection:  @user_posts, locals: { comment: @comment } %>
+      </div>
+      <% if current_user&.id == @user.id%>
+        <!-- User's Favorites Posts Start -->
+        <div class="tabbox">
+          <%= render partial: 'posts/post', collection: @user_like_posts, locals: { comment: @comment } %>          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- Main content END -->
+  </div>
+  <!-- Row END -->
+</div>
+<!-- Container END -->

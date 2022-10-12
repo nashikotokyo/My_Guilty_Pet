@@ -1,0 +1,6 @@
+$('#like_area-<%= @post.id %>').html("<%= j render('like', post: @post) %>")
+<% if @post.likes.count == 0 %>
+  $('#like_count-<%= @post.id %>').html("")
+<% else %>
+  $('#like_count-<%= @post.id %>').html("<%= j "(#{@post.likes.count})" %>")
+<% end %>

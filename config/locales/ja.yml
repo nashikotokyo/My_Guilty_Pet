@@ -1,0 +1,53 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+      comment: 'コメント'
+      like: 'いいね'
+    attributes:
+      user:
+        username: 'ユーザー名'
+      post:
+        image: '画像'
+        body: '本文'
+      comment:
+        body: 'キャプション'
+
+  static_pages:
+    home:
+      title: 'ホーム'
+    contact:
+      title: 'お問い合わせ'
+    privacy:
+      title: 'プライバシーポリシー'
+    terms:
+      title: '利用規約'
+  user_sessions:
+    new:
+      title: 'ログイン'
+  users:
+    show:
+      title: 'ユーザー詳細'
+  profiles:
+    edit:
+      title: 'プロフィール編集'
+  posts:
+    index:
+      title: '投稿一覧'
+    new:
+      title: '新規作成'
+    ranking:
+      title: 'ランキング'
+    tweet:
+      title: 'Twitterで共有'
+
+  attributes:
+    created_at: '作成日時'
+    updated_at: '更新日時'
+
+  time:
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"

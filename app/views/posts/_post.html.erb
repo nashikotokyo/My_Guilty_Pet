@@ -1,0 +1,50 @@
+<!-- Card START -->
+<div class="card post-partial my-4" id="post-<%= post.id %>">
+  <!-- Card header START -->
+  <div class="card-header py-2">
+    <!-- User name & Post time -->
+    <div class="d-flex align-items-center" > 
+      <% if controller.action_name == "ranking" %>
+        <h4 class="me-3 mb-0"><%= post_counter + 1 %>位</h4>
+      <% end %>
+      <div>
+        <%= link_to user_path(post.user) do %>
+          <h6 class="mb-0"><%= post.user.username %></h6>
+        <% end %>
+        <p class="small mb-0"><%= l post.created_at, format: :short %></p>
+      </div>
+      <!-- Delete Button -->
+      <% if current_user&.own?(post)%>
+        <div class="ms-auto d-flex align-items-center">
+          <%= link_to "https://twitter.com/share?url=#{request.base_url}#{user_path(post.user)}?post_id=#{post.id}&text=#{post.body}%0a", title: 'Twitter', target: '_blank', class: 'btn btn-twitter py-1 px-2 text-nowrap' do %>
+            <i class="fab fa-twitter"></i>
+            シェア
+          <% end %>
+          <%= link_to post_path(post), class: 'delete-button ms-3', method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <!-- Card header END -->
+
+  <!-- Card body START -->
+  <div class="card-body p-0">
+    <!-- Post Contents -->
+    <p class="mx-3 my-3"><%= post.body %></p>
+      <%= image_tag post.image.url %>
+    <!-- Like Button -->
+    <% if logged_in? && !current_user.own?(post) %>
+      <%= render 'likes/like_area', post: post %>
+    <% end %>
+    <!-- Comment Input Form-->
+    <% if logged_in? %>
+      <%= render 'comments/form', post: post, comment: comment %>
+    <% end %>
+    <!-- Show Comments -->
+    <%= render 'comments/comments', comments: post.comments.includes(:user).order(created_at: :desc), post: post %>
+  </div>
+  <!-- Card body END -->
+</div>
+<!-- Card END -->

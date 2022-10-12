@@ -1,0 +1,137 @@
+<% content_for(:title, t('.title')) %>
+  <!-- landing image START -->
+  <section class="p-0 pb-0 position-relative">
+    <div>
+      <%= image_pack_tag "topimage_light.png", class: "light-mode-item" %> 
+      <%= image_pack_tag "topimage_dark.png", class: "dark-mode-item"%>
+    </div>
+  </section>
+  <!-- landing image END -->
+
+  <!-- About START -->
+  <section class="p-0 pb-0">
+    <!-- Container START -->
+    <div class="container">
+      <!-- Row START -->
+      <div class="row position-relative z-index-1">
+        <div class="d-flex justify-content-center">
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "使い方", { anchor: "how-to-use" }, class: "btn btn-purple text-nowrap" %>
+          </div>
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "ログイン", login_path, class: "btn btn-purple px-2 text-nowrap" %>
+          </div>
+        </div>
+      </div>
+      <!-- Row END -->
+      <!-- Row START -->
+      <div class="row text-center position-relative z-index-1">
+      <div class="col-lg-7 mx-auto mt-5 mt-sm-7">
+        <u><h2 class="h1">About</h2></u>
+      </div>
+      <div class="col-lg-7 mx-auto mt-4 mt-sm-6">
+        <p>ペットとは時に罪を犯すもの。</p>
+        <p>物を壊したり、脱走したり、ゴミ箱を漁ったり・・</p>
+        <p>大変だけどそんな所も結局愛おしい。</p>
+        <br>
+        <p>そんな愛すべきペットの写真を</p>
+        <p>犯罪者に仕立て上げたテンプレートに乗せて</p>
+        <p>おもしろ可愛く投稿・SNSでシェアしてみよう！</p>
+        <br>
+        <p>どんな凶悪犯罪ペットが生まれるかな？</p>
+      </div>
+      </div>
+      <!-- Row END -->
+    </div> 
+    <!-- Container END -->
+  </section>
+  <!-- About END -->
+  
+  <!-- How to Use START -->
+  <section class="py-4 py-sm-5">
+    <!-- Container START -->
+    <div class="container">
+      <!-- Title START -->
+      <div class="row text-center position-relative z-index-1">
+        <div class="col-lg-7 mx-auto mt-4 mt-sm-6", id="how-to-use">
+          <u><h2 class="h1">How to Use</h2></u>
+        </div>
+      </div>
+      <!-- Title END -->
+      <div class="row mt-4 mt-sm-6 justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <!-- Step1 START -->
+          <div class="row align-items-center">
+            <div class="col-3 col-sm-2">
+              <!-- Image -->
+              <%= image_pack_tag "paw1_light.png", class: "light-mode-item" %>
+              <%= image_pack_tag "paw1_dark.png", class: "dark-mode-item" %>
+            </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">ログイン画面でTwitter、Google、LINEアカウントのいずれかでログインする。</p>
+            </div>
+          </div>
+          <!-- Step2 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
+              <!-- Image -->
+              <%= image_pack_tag "paw2_light.png", class: "light-mode-item" %>
+              <%= image_pack_tag "paw2_dark.png", class: "dark-mode-item" %>
+            </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">画面下の + ボタンから新規作成画面へ進み、好きなテンプレートを選択する。</p>
+            </div>
+          </div>
+          <!-- Step3 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
+              <!-- Image -->
+              <%= image_pack_tag "paw3_light.png", class: "light-mode-item" %>
+              <%= image_pack_tag "paw3_dark.png", class: "dark-mode-item" %>
+            </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">自分のペットの画像を選択後、トリミングしてテンプレートに合成。文字合成が必要な場合は入力し、合成を完了する。</p>
+            </div>
+          </div>
+          <!-- Step4 START -->
+          <div class="mt-5 row align-items-center">
+            <div class="col-3 col-sm-2">
+              <!-- Image -->
+              <%= image_pack_tag "paw4_light.png", class: "light-mode-item" %>
+              <%= image_pack_tag "paw4_dark.png", class: "dark-mode-item" %>
+            </div>
+            <div class="col-9 col-sm-10">
+              <!-- Info -->
+              <p class="mb-0">投稿ボタンをクリック！投稿後にTwitterでのシェアも可能。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button START -->
+      <div class="row my-5 my-sm-7">
+        <div class="d-flex justify-content-center">
+          <div class="mt-2 mt-sm-0 mx-3 mx-md-4">
+            <%= link_to "投稿を見る", posts_path, class: "btn btn-purple text-nowrap" %>
+          </div>
+        </div>
+      </div>
+      <!-- Button END -->
+    </div>
+    <!-- Container END -->
+    <!-- Svg decoration START -->
+    <div class="position-absolute top-0 start-0">
+      <img class="h-300px blur-8" src="bootstrap_themes/assets/images/elements/01.svg" alt="">
+    </div>
+    <div class="position-absolute top-0 end-0 mt-10 pt-10">
+      <img class="h-300px blur-8 mt-5 pt-5" src="bootstrap_themes/assets/images/elements/07.svg" alt="">
+    </div>
+    <div class="position-absolute top-50">
+      <img class="h-300px blur-9" src="bootstrap_themes/assets/images/elements/02.svg" alt="">
+    </div>
+    <!-- Svg decoration END -->
+  </section>
+  <!-- How to Use END -->

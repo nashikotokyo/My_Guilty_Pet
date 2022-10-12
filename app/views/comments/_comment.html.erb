@@ -1,0 +1,17 @@
+<li id="comment-<%= comment.id %>" class="mb-3">
+  <div class="d-flex">
+    <h6 class="mb-1"><%= comment.user.username %></h6>
+    <p class="small mb-0 ms-auto"><%= l comment.created_at, format: :short %></p>
+  </div>
+  <!-- Comment Contents -->
+  <div class="d-flex align-items-center">
+    <div class="bg-light rounded-start-top-0 p-2 rounded flex-grow-1">
+      <p class="small mb-0"><%= comment.body %></p>
+    </div>
+    <% if current_user&.own?(comment)%>
+      <%= link_to comment_path(comment), class: 'delete-button ms-2', remote: true, method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    <% end %>
+  </div>
+</li>

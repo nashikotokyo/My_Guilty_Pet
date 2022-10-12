@@ -1,0 +1,2 @@
+$('#like_area-<%= @post.id %>').html("<%= j render('unlike', post: @post) %>")
+$('#like_count-<%= @post.id %>').html("<%= j "(#{@post.likes.count})" %>")

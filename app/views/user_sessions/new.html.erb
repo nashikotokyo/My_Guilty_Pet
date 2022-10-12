@@ -1,0 +1,40 @@
+<% content_for(:title, t('.title')) %>
+<!-- Container START -->
+<div class="container">
+  <div class="row justify-content-center vh-100 py-5">
+    <!-- Main content START -->
+     <div class="col-sm-10 col-md-8 col-lg-7">
+      <!-- Sign up START -->
+      <div class="card rounded-3 p-4 p-sm-5">
+        <!-- Title -->
+        <div class="card-header text-center">
+          <h3 class="mb-2">ログイン</h3>
+        </div>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <%= link_to auth_at_provider_path(provider: :twitter), class: 'btn btn-twitter d-flex align-items-center justify-content-center p-3 m-2' do %>
+            <i class="fab fa-twitter fa-2x"></i>
+            <div class="flex-grow-1">
+              Twitterでログイン
+            </div>
+          <% end %>
+          <%= link_to auth_at_provider_path(provider: :line), class: 'btn btn-line d-flex align-items-center justify-content-center p-3 m-2' do %>
+            <i class="fa-brands fa-line fa-2x"></i>
+            <div class="flex-grow-1">
+              LINEでログイン
+            </div>
+          <% end %>
+          <%= link_to auth_at_provider_path(provider: :google), class: 'btn btn-google d-flex align-items-center justify-content-center p-3 m-2' do %>
+            <i class="fa-brands fa-google fa-2x"></i>
+            <div class="flex-grow-1">
+              Googleでログイン
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- Sign up END -->
+    </div>
+    <!-- Main content END -->
+  </div>
+  <!-- Row END -->
+</div>
+<!-- Container END -->
