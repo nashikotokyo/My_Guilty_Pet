@@ -120,7 +120,7 @@
 					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 				}
 			  // 完成イメージをフォーム内のhiddenに設定
-				const imageUrl = canvas.toDataURL('image/jpeg');
+				const imageUrl = canvas.toDataURL('image/jpg');
 				document.querySelector("#post_image").value = imageUrl
         // 完成した画像の投稿部分を表示
         this.localActivePart = 3;
