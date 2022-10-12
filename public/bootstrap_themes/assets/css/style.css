@@ -16934,5 +16934,12 @@ html[data-theme=dark] .light-mode-item {
 .after-like-icon {
   color: #dc3545;
 }
+
+/*携帯での表示崩れ対応*/
+canvas#combined_canvas {
+  width: 100%;
+  height: auto;
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style.css.map */
