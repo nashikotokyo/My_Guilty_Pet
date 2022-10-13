@@ -1,14 +1,14 @@
 twitter:
   access_key: <%= Rails.application.credentials.twitter[:access_key] %>
   secret_key: <%= Rails.application.credentials.twitter[:secret_key] %>
-  callback_url: https://myguiltypet.herokuapp.com/oauth/twitter/callback
+  callback_url: https://myguiltypet.com/oauth/twitter/callback
 
 line:
   access_key: <%= Rails.application.credentials.line[:access_key] %>
   secret_key: <%= Rails.application.credentials.line[:secret_key] %>
-  callback_url: https://myguiltypet.herokuapp.com/oauth/line/callback
+  callback_url: https://myguiltypet.com/oauth/line/callback
 
 google:
   access_key: <%= Rails.application.credentials.google[:access_key] %>
   secret_key: <%= Rails.application.credentials.google[:secret_key] %>
-  callback_url: https://myguiltypet.herokuapp.com/oauth/google/callback
+  callback_url: https://myguiltypet.com/oauth/google/callback
