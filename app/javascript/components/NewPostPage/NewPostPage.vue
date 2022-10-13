@@ -204,4 +204,10 @@
       opacity: 1;
     }
   }
+
+	/*携帯での表示崩れ対応*/
+  canvas#combined_canvas {
+    width: 100%;
+    height: auto;
+  }
 </style>
