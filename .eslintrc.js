@@ -3,6 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true,
         "node": true,
+        "jquery": true, 
     },
     "extends": [
         "eslint:recommended",
@@ -18,5 +19,7 @@ module.exports = {
         "vue"
     ],
     "rules": {
+        "vue/no-deprecated-slot-attribute": "off",
+        "vue/multi-word-component-names": "off"
     }
 }
