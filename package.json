@@ -27,6 +27,6 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "lint": "yarn run eslint --ext .vue --ext .js app/javascript"
+    "lint": "yarn run eslint --fix --ext .vue,.js app/javascript"
   }
 }
