@@ -18,14 +18,14 @@
 						<div class="thumb-example">
 							<!-- swiper1 -->
 							<swiper class="swiper gallery-top" :options="swiperOptionTop" ref="swiperTop" @slideChange="getActiveSlide">
-								<swiper-slide v-for="template in templates" >
+								<swiper-slide v-for="(template, index) in templates" :key=index>
 									<img :src="template.img">
 								</swiper-slide>
 								<div class="swiper-pagination"  slot="pagination"></div>
 							</swiper>
 							<!-- swiper2 Thumbs -->
 							<swiper class="swiper gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
-								<swiper-slide v-for="template in templates">
+								<swiper-slide v-for="(template, index) in templates" :key=index>
 									<img :src="template.img">
 								</swiper-slide>
 							</swiper>
@@ -68,12 +68,12 @@
 								<textarea class="form-control" name="post[body]" id="post_body"></textarea>
 							</div>
 							<div class="p-2 d-flex align-items-center justify-content-between">
-				      	<div>
-						      <button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
+								<div>
+									<button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
 								</div>
-          		  <div>
-							  	<button type="submit" class="btn btn-purple" data-disable-with="投稿">投稿</button>
-						  	</div>
+								<div>
+									<button type="submit" class="btn btn-purple" data-disable-with="投稿">投稿</button>
+								</div>
 							</div>
 						</form>
 						<!-- Form END -->
@@ -124,22 +124,22 @@
 					{id:5, img:'/bootstrap_themes/assets/images/templates/wanted_3.png'},
 					{id:6, img:'/bootstrap_themes/assets/images/templates/wanted_4.png'},
 				],
-		  	swiperOptionTop: {
-		  	  loop: true,
-			    loopedSlides: 7,
-			    pagination: {
-		  			el: '.swiper-pagination',
-			  		clickable: true
-	  	  	}
-	    	},
-		  	swiperOptionThumbs: {
-		  	  loop: true,
-		    	loopedSlides: 7,
+					swiperOptionTop: {
+					loop: true,
+					loopedSlides: 7,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true
+					}
+				},
+				swiperOptionThumbs: {
+					loop: true,
+					loopedSlides: 7,
 					centeredSlides: true,
-	    		slidesPerView: 7,
+					slidesPerView: 7,
 					touchRatio: 0.2,
-	    		slideToClickedSlide: true
-	    	}		
+					slideToClickedSlide: true
+				}		
       }
     },
 		mounted() {
@@ -147,12 +147,12 @@
 			const token = document.getElementsByName("csrf-token")[0].content;
 			document.querySelector("#authenticity_token").value = token;
 
-  		this.$nextTick(() => {
-	  		const swiperTop = this.$refs.swiperTop.$swiper
-	  		const swiperThumbs = this.$refs.swiperThumbs.$swiper
-		  	swiperTop.controller.control = swiperThumbs
-		  	swiperThumbs.controller.control = swiperTop
-		  });
+				this.$nextTick(() => {
+				const swiperTop = this.$refs.swiperTop.$swiper
+				const swiperThumbs = this.$refs.swiperThumbs.$swiper
+				swiperTop.controller.control = swiperThumbs
+				swiperThumbs.controller.control = swiperTop
+			});
     },
 		methods:{
 			getActiveSlide(){

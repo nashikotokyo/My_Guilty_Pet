@@ -42,14 +42,14 @@
         </div>
         <div class="form-group">
           <label for="detail2">2列目</label>
-          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="　食い逃げ">
+          <input type="text" class="form-control" id="detail2" maxlength="6" placeholder="  食い逃げ">
           <div class="text-end">
             <button @click="drawDetail2" class="btn btn-purple mt-1">合成</button>
           </div> 
         </div>
 				<div class="form-group">
           <label for="detail3">3列目</label>
-          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="　　した罪">
+          <input type="text" class="form-control" id="detail3" maxlength="6" placeholder="    した罪">
           <div class="text-end">
             <button @click="drawDetail3" class="btn btn-purple mt-1">合成</button>
           </div> 
@@ -101,7 +101,7 @@
           reader.onload = (event) => {
 						this.imgSrc = event.target.result;
 						// rebuild cropperjs with the updated source
-          	this.$refs.cropper.replace(event.target.result);
+						this.$refs.cropper.replace(event.target.result);
           };
           reader.readAsDataURL(file);
 				} else {
@@ -188,7 +188,7 @@
 					const image1 = await this.getImagefromCanvas(assets[i]);
 					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 				}
-			  // 完成イメージをフォーム内のhiddenに設定
+				// 完成イメージをフォーム内のhiddenに設定
 				const imageUrl = canvas.toDataURL('image/jpg');
 				document.querySelector("#post_image").value = imageUrl
         // 完成した画像の投稿部分を表示

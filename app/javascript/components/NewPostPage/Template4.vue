@@ -91,7 +91,7 @@
           reader.onload = (event) => {
 						this.imgSrc = event.target.result;
 						// rebuild cropperjs with the updated source
-          	this.$refs.cropper.replace(event.target.result);
+						this.$refs.cropper.replace(event.target.result);
           };
           reader.readAsDataURL(file);
 				} else {
@@ -159,7 +159,7 @@
 					const image1 = await this.getImagefromCanvas(assets[i]);
 					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 				}
-			  // 完成イメージをフォーム内のhiddenに設定
+				// 完成イメージをフォーム内のhiddenに設定
 				const imageUrl = canvas.toDataURL('image/jpg');
 				document.querySelector("#post_image").value = imageUrl
         // 完成した画像の投稿部分を表示
