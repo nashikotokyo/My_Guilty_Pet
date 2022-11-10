@@ -31,7 +31,7 @@
 							</swiper>
 						</div>
 						<div class="p-2 d-flex align-items-center justify-content-end">
-							<input type="button" value="選択" class="btn btn-purple" @click="showTemplate">
+							<ButtonTemplate @click="showTemplate">選択</ButtonTemplate>
 						</div>
 					</div>
 				</div>
@@ -69,10 +69,10 @@
 							</div>
 							<div class="p-2 d-flex align-items-center justify-content-between">
 								<div>
-									<button type="button" @click="backTo2nd" class="btn btn-purple">戻る</button>
+									<ButtonTemplate type="button" @click="backTo2nd">戻る</ButtonTemplate>
 								</div>
 								<div>
-									<button type="submit" class="btn btn-purple" data-disable-with="投稿">投稿</button>
+									<ButtonTemplate type="submit" data-disable-with="投稿">投稿</ButtonTemplate>
 								</div>
 							</div>
 						</form>
@@ -98,6 +98,7 @@
 	import Template4 from "./Template4.vue";
 	import Template5 from "./Template5.vue";
 	import Template6 from "./Template6.vue";
+	import ButtonTemplate from "./ButtonTemplate.vue";
 
 	export default {
 		components: {
@@ -110,6 +111,7 @@
 			Template4,
 			Template5,
 			Template6,
+			ButtonTemplate,
     },
     data: function () {
       return {

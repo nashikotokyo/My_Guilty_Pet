@@ -18,7 +18,7 @@
           :aspect-ratio="7 / 4"
         />
         <div class="text-end">
-          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+					<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
         </div>
       </div>
       <div class="mt-1 mx-2" v-show="cropImg">
@@ -27,7 +27,7 @@
 					<p class="mb-0 small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
 					<input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕">
           <div class="text-end">
-            <button @click="drawTelop" class="btn btn-purple mt-1">合成</button>
+						<ButtonTemplate @click="drawTelop" class="mt-1">合成</ButtonTemplate>
           </div>
         </div>
       </div>
@@ -39,10 +39,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-purple">戻る</button>
+						<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
+						<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])">次へ</ButtonTemplate>
 					</div>					          
         </div>
       </div>
@@ -53,10 +53,12 @@
 <script>
 	import VueCropper from 'vue-cropperjs';
   import 'cropperjs/dist/cropper.css';
+	import ButtonTemplate from "./ButtonTemplate.vue";
 
 	export default {
 		components: {
-			VueCropper
+			VueCropper,
+			ButtonTemplate
     },
 		props: ['value'],
     data: function () {

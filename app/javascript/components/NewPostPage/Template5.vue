@@ -18,7 +18,7 @@
           :aspect-ratio="73 / 32"
         />
         <div class="text-end">
-          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+					<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
         </div>
       </div>
       <div class="mt-2">
@@ -29,10 +29,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-purple">戻る</button>
+						<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
+						<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])">次へ</ButtonTemplate>
 					</div>					          
         </div>
       </div>
@@ -43,10 +43,12 @@
 <script>
 	import VueCropper from 'vue-cropperjs';
   import 'cropperjs/dist/cropper.css';
+	import ButtonTemplate from "./ButtonTemplate.vue";
 
 	export default {
 		components: {
-			VueCropper
+			VueCropper,
+			ButtonTemplate
     },
 		props: ['value'],
     data: function () {
