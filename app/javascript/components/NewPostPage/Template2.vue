@@ -5,49 +5,56 @@
       <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="p-0 card-body d-flex flex-column justify-content-center">
-      <div class="form-group mx-2 mt-3">
-        <label for="pet_image">・ペットの画像を選択</label>
-        <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
-      </div>
-      <div v-show="imgSrc" class="mt-3">
-        <vue-cropper
-          ref="cropper"
-          :src="imgSrc"
-          :auto-crop-area="0.5"
-          :aspect-ratio="7 / 4"
-        />
-        <div class="text-end">
-					<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
-        </div>
-      </div>
-      <div class="mt-1 mx-2" v-show="cropImg">
-        <div class="form-group" >
-          <label for="telop">・テロップの内容を入力</label>
-					<p class="mb-0 small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
-					<input type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕">
-          <div class="text-end">
-						<ButtonTemplate @click="drawTelop" class="mt-1">合成</ButtonTemplate>
-          </div>
-        </div>
-      </div>
-      <div class="mt-2">
-        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
-        <div class="canvas-wrapper">
-          <canvas id="image_canvas" width="1200" height="630"></canvas>
-          <canvas id="text_canvas" width="1200" height="630"></canvas>
-        </div>
-        <div class="p-2 d-flex align-items-center justify-content-between">
-					<div>
-						<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
+		<ValidationObserver ref="observer" v-slot="{ invalid }">
+			<div class="p-0 card-body d-flex flex-column justify-content-center">
+				<div class="form-group mx-2 mt-3">
+					<label for="pet_image">・ペットの画像を選択</label>
+					<input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
+				</div>
+				<div v-show="imgSrc" class="mt-3">
+					<vue-cropper
+						ref="cropper"
+						:src="imgSrc"
+						:auto-crop-area="0.5"
+						:aspect-ratio="7 / 4"
+					/>
+					<div class="text-end">
+						<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
 					</div>
-          <div>
-						<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])">次へ</ButtonTemplate>
-					</div>					          
-        </div>
-      </div>
-    </div>      
-  </div>
+				</div>
+				<div class="mt-1 mx-2" v-show="cropImg">
+					<ValidationObserver ref="observer1" v-slot="{ invalid }">
+						<div class="form-group" >
+							<label for="telop">・テロップの内容を入力</label>
+							<p class="mb-0 small">(例)〇〇容疑者〇〇の罪で逮捕/〇〇氏〇〇の罪で禁固〇〇分求刑</p>
+							<validation-provider name="テロップ" rules="badWords|required" v-slot="{ errors }">
+								<input v-model="telop" type="text" class="form-control" id="telop" placeholder="山田ポチ氏飼い主への業務妨害罪で逮捕">
+								<span class="errmsg">{{ errors[0] }}</span>
+							</validation-provider>
+							<div class="text-end">
+								<ButtonTemplate @click="drawTelop" class="mt-1" :disabled="invalid">合成</ButtonTemplate>
+							</div>
+						</div>
+					</ValidationObserver>
+				</div>
+				<div class="mt-2">
+					<label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+					<div class="canvas-wrapper">
+						<canvas id="image_canvas" width="1200" height="630"></canvas>
+						<canvas id="text_canvas" width="1200" height="630"></canvas>
+					</div>
+					<div class="p-2 d-flex align-items-center justify-content-between">
+						<div>
+							<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
+						</div>
+						<div>
+							<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" :disabled="invalid">次へ</ButtonTemplate>
+						</div>					          
+					</div>
+				</div>
+			</div>
+		</ValidationObserver>
+	</div>
 </template>
 
 <script>
@@ -64,7 +71,8 @@
     data: function () {
       return {
 				imgSrc: '',
-        cropImg: '',			
+        cropImg: '',
+				telop: '',
       }
     },
 		methods:{
