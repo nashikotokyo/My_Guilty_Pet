@@ -16935,5 +16935,9 @@ html[data-theme=dark] .light-mode-item {
   color: #dc3545;
 }
 
+.errmsg {
+  color: var(--bs-red)
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style.css.map */
