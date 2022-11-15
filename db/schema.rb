@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_17_125959) do
+ActiveRecord::Schema.define(version: 2022_11_15_024217) do
 
   create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2022_09_17_125959) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_bookmarks_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_bookmarks_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -58,6 +68,8 @@ ActiveRecord::Schema.define(version: 2022_09_17_125959) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "bookmarks", "posts"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"

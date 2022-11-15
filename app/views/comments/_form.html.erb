@@ -1,6 +1,6 @@
 <div class="comment-input-form my-2 mx-3">
-  <%= form_with model: [post, comment], class: "position-relative w-100", local: false do |f| %>
-    <%= f.text_field :body, class: 'form-control pe-4 bg-light', id: "input-comment-box-#{ post.id }", placeholder: "コメントする" %>
+  <%= form_with model: [post, comment], class: "comment-form position-relative w-100", local: false do |f| %>
+    <%= f.text_field :body, class: 'form-control pe-4', id: "input-comment-box-#{ post.id }", placeholder: "コメントする" %>
     <%= f.button :type => "submit", style: 'border-style: none;', class: "btn comment-btn position-absolute top-0 end-0" do %>
       <i class="fa-regular fa-comment fa-lg"></i>
     <% end %>

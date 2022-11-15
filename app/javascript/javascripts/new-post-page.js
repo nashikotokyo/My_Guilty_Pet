@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import NewPostPage from '../components/NewPostPage/NewPostPage.vue'
+import veeValidate from "./vee-validate"
+
+Vue.mixin(veeValidate)
 
 document.addEventListener('DOMContentLoaded', () => {
   const selector = '#js-new-post-page'

@@ -32,10 +32,10 @@ RSpec.describe 'ユーザー情報', type: :system do
         expect(page).not_to have_content post_by_other_user.body
       end
 
-      it '自分のいいねした投稿が表示されること' do
-        user.like(post_by_other_user)
+      it '自分のブックマークした投稿が表示されること' do
+        user.bookmark(post_by_other_user)
         visit user_path(user)
-        click_on('お気に入り')
+        click_on('保存済み')
         expect(page).to have_content post_by_other_user.body
       end
     end

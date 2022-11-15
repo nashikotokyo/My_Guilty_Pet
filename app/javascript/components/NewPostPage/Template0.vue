@@ -5,78 +5,101 @@
       <h3 class="mb-0">画像と文字の合成</h3>
     </div>
     <!-- Body -->
-    <div class="p-0 card-body d-flex flex-column justify-content-center">
-      <div class="form-group mx-2 mt-3">
-        <label for="pet_image">・ペットの画像を選択</label>
-        <input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
-      </div>
-      <div v-show="imgSrc" class="mt-3">
-        <vue-cropper
-          ref="cropper"
-          :src="imgSrc"
-          :auto-crop-area="0.5"
-          :aspect-ratio="53 / 33"
-        />
-        <div class="text-end">
-          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
-        </div>
-      </div>
-      <div class="mt-1 mx-2" v-show="cropImg">
-        <div class="form-group" >
-          <label for="pet_name">・ペットの名前を入力</label>
-          <input type="text" class="form-control" id="pet_name" placeholder="ポチ">
-          <div class="text-end">
-            <button @click="drawPetName" class="btn btn-purple mt-1" id="combine-btn-1">合成</button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="crime_name">・犯行内容・罪名を入力</label>
-					<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
-          <input type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪">
-          <div class="text-end">
-            <button @click="drawCrimeName" class="btn btn-purple mt-1" id="combine-btn-2">合成</button>
-          </div> 
-        </div>
-        <div class="form-group">
-          <label for="bounty">・懸賞金額を入力</label>
-          <input type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000">
-          <div class="text-end">
-            <button @click="drawBounty" class="btn btn-purple mt-1" id="combine-btn-3">合成</button>
-          </div> 
-        </div>
-      </div>
-      <div class="mt-2">
-        <label for="canvas-wrapper" class="ms-2">合成イメージ</label>
-        <div class="canvas-wrapper">
-          <canvas id="image_canvas" width="1200" height="630"></canvas>
-          <canvas id="text_canvas" width="1200" height="630"></canvas>
-        </div>
-        <div class="p-2 d-flex align-items-center justify-content-between">
-					<div>
-						<button @click="backTo1st" class="btn btn-purple">戻る</button>
+		<ValidationObserver ref="observer" v-slot="{ invalid }">
+			<div class="p-0 card-body d-flex flex-column justify-content-center">
+				<div class="form-group mx-2 mt-3">
+					<label for="pet_image">・ペットの画像を選択</label>
+					<input type="file" class="form-control" ref="input" id="pet_image" name="image" accept="image/*" @change="setImage"/>
+				</div>
+				<div v-show="imgSrc" class="mt-3">
+					<vue-cropper
+						ref="cropper"
+						:src="imgSrc"
+						:auto-crop-area="0.5"
+						:aspect-ratio="53 / 33"
+					/>
+					<div class="text-end">
+						<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
 					</div>
-          <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
+				</div>
+				<div class="mt-1 mx-2" v-show="cropImg">
+					<ValidationObserver ref="observer1" v-slot="{ invalid }">
+						<div class="form-group" >
+							<label for="pet_name">・ペットの名前を入力</label>
+							<validation-provider name="ペット名" rules="badWords|required" v-slot="{ errors }">
+								<input v-model="pet_name" type="text" class="form-control" id="pet_name" placeholder="ポチ">
+								<span class="errmsg">{{ errors[0] }}</span>
+							</validation-provider>
+							<div class="text-end">
+								<ButtonTemplate @click="drawPetName" class="mt-1" :disabled="invalid" id="combine-btn-1">合成</ButtonTemplate>
+							</div>
+						</div>
+					</ValidationObserver>  
+					<ValidationObserver ref="observer2" v-slot="{ invalid }">
+						<div class="form-group">
+							<label for="crime_name">・犯行内容・罪名を入力</label>
+							<p class="mb-0 small">(例)脱走罪/高級バッグ破壊罪/可愛すぎる罪</p>
+							<validation-provider name="犯行内容" rules="badWords|required" v-slot="{ errors }">
+								<input v-model="crime_name" type="text" class="form-control" id="crime_name" placeholder="テレワーク中かまってちゃん罪">
+								<span class="errmsg">{{ errors[0] }}</span>
+							</validation-provider>
+							<div class="text-end">
+								<ButtonTemplate @click="drawCrimeName" class="mt-1" :disabled="invalid" id="combine-btn-2">合成</ButtonTemplate>
+							</div> 
+						</div>
+					</ValidationObserver>
+					<ValidationObserver ref="observer3" v-slot="{ invalid }">
+						<div class="form-group">
+							<label for="bounty">・懸賞金額を入力</label>
+							<validation-provider name="懸賞金額" rules="badWords|required" v-slot="{ errors }">
+								<input v-model="bounty" type="text" class="form-control" id="bounty" placeholder="懸賞金 ¥100,000">
+								<span class="errmsg">{{ errors[0] }}</span>
+							</validation-provider>
+							<div class="text-end">
+								<ButtonTemplate @click="drawBounty" class="mt-1" :disabled="invalid" id="combine-btn-3">合成</ButtonTemplate>
+							</div> 
+						</div>
+					</ValidationObserver>
+				</div>
+				<div class="mt-2">
+					<label for="canvas-wrapper" class="ms-2">合成イメージ</label>
+					<div class="canvas-wrapper">
+						<canvas id="image_canvas" width="1200" height="630"></canvas>
+						<canvas id="text_canvas" width="1200" height="630"></canvas>
 					</div>
-        </div>
-      </div>
-    </div>      
+					<div class="p-2 d-flex align-items-center justify-content-between">
+						<div>
+							<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
+						</div>
+						<div>
+							<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" :disabled="invalid">次へ</ButtonTemplate>
+						</div>
+					</div>
+				</div>
+			</div>  
+		</ValidationObserver>
   </div>
 </template>
 
 <script>
 	import VueCropper from 'vue-cropperjs';
   import 'cropperjs/dist/cropper.css';
+	import ButtonTemplate from "./ButtonTemplate.vue";
+	
 
 	export default {
 		components: {
-			VueCropper
+			VueCropper,
+			ButtonTemplate
     },
 		props: ['value'],
     data: function () {
       return {
 				imgSrc: '',
-        cropImg: '',			
+        cropImg: '',
+				pet_name: '',
+				crime_name: '',
+				bounty: '',
       }
     },
 		methods:{
@@ -91,7 +114,7 @@
           reader.onload = (event) => {
 						this.imgSrc = event.target.result;
 						// rebuild cropperjs with the updated source
-          	this.$refs.cropper.replace(event.target.result);
+						this.$refs.cropper.replace(event.target.result);
           };
           reader.readAsDataURL(file);
 				} else {
@@ -159,7 +182,7 @@
 					const image1 = await this.getImagefromCanvas(assets[i]);
 					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 				}
-			  // 完成イメージをフォーム内のhiddenに設定
+				// 完成イメージをフォーム内のhiddenに設定
 				const imageUrl = canvas.toDataURL('image/jpg');
 				document.querySelector("#post_image").value = imageUrl
         // 完成した画像の投稿部分を表示

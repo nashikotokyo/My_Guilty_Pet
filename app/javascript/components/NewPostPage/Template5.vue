@@ -18,7 +18,7 @@
           :aspect-ratio="73 / 32"
         />
         <div class="text-end">
-          <button class="btn btn-purple mt-1 me-2" @click.prevent="drawCroppedImg">トリミング</button>
+					<ButtonTemplate @click.prevent="drawCroppedImg" class="mt-1 me-2">トリミング</ButtonTemplate>
         </div>
       </div>
       <div class="mt-2">
@@ -29,10 +29,10 @@
         </div>
         <div class="p-2 d-flex align-items-center justify-content-between">
 					<div>
-						<button @click="backTo1st" class="btn btn-purple">戻る</button>
+						<ButtonTemplate type="button" @click="backTo1st">戻る</ButtonTemplate>
 					</div>
           <div>
-						<button v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])" class="btn btn-purple">次へ</button>
+						<ButtonTemplate v-show="cropImg" @click="setCompletedImage('#combined_canvas', ['#image_canvas', '#text_canvas'])">次へ</ButtonTemplate>
 					</div>					          
         </div>
       </div>
@@ -43,10 +43,12 @@
 <script>
 	import VueCropper from 'vue-cropperjs';
   import 'cropperjs/dist/cropper.css';
+	import ButtonTemplate from "./ButtonTemplate.vue";
 
 	export default {
 		components: {
-			VueCropper
+			VueCropper,
+			ButtonTemplate
     },
 		props: ['value'],
     data: function () {
@@ -67,7 +69,7 @@
           reader.onload = (event) => {
 						this.imgSrc = event.target.result;
 						// rebuild cropperjs with the updated source
-          	this.$refs.cropper.replace(event.target.result);
+						this.$refs.cropper.replace(event.target.result);
           };
           reader.readAsDataURL(file);
 				} else {
@@ -86,7 +88,7 @@
 					// 描画の位置は仮設定
 					ctx.drawImage(croppedImg, 236, 180, 730, 320);
         }
-		  },
+			},
 			setCompletedImage:async function(base, assets){
 				// imageとtextの2つのcanvasを合成する
 				const canvas = document.querySelector(base);
@@ -96,7 +98,7 @@
 					const image1 = await this.getImagefromCanvas(assets[i]);
 					ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 				}
-			  // 完成イメージをフォーム内のhiddenに設定
+				// 完成イメージをフォーム内のhiddenに設定
 				const imageUrl = canvas.toDataURL('image/jpg');
 				document.querySelector("#post_image").value = imageUrl
         // 完成した画像の投稿部分を表示

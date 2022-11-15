@@ -10,12 +10,15 @@
 #                         auth_at_provider GET    /oauth/:provider(.:format)                                                                        oauths#oauth
 #                                    login GET    /login(.:format)                                                                                  user_sessions#new
 #                                   logout DELETE /logout(.:format)                                                                                 user_sessions#destroy
+#                                          GET    /login_as/:user_id(.:format)                                                                      development/sessions#login_as
 #                            ranking_posts GET    /posts/ranking(.:format)                                                                          posts#ranking
 #                               tweet_post GET    /posts/:id/tweet(.:format)                                                                        posts#tweet
 #                            post_comments POST   /posts/:post_id/comments(.:format)                                                                comments#create
 #                                  comment DELETE /comments/:id(.:format)                                                                           comments#destroy
 #                               post_likes POST   /posts/:post_id/likes(.:format)                                                                   likes#create
 #                                     like DELETE /likes/:id(.:format)                                                                              likes#destroy
+#                           post_bookmarks POST   /posts/:post_id/bookmarks(.:format)                                                               bookmarks#create
+#                                 bookmark DELETE /bookmarks/:id(.:format)                                                                          bookmarks#destroy
 #                                    posts GET    /posts(.:format)                                                                                  posts#index
 #                                          POST   /posts(.:format)                                                                                  posts#create
 #                                 new_post GET    /posts/new(.:format)                                                                              posts#new
@@ -24,7 +27,6 @@
 #                             edit_profile GET    /profile/edit(.:format)                                                                           profiles#edit
 #                                  profile PATCH  /profile(.:format)                                                                                profiles#update
 #                                          PUT    /profile(.:format)                                                                                profiles#update
-#                                          GET    /login_as/:user_id(.:format)                                                                      development/sessions#login_as
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
 #            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -77,6 +79,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: %i[create destroy]
     resources :likes, only: %i[create destroy]
+    resources :bookmarks, only: %i[create destroy]
   end
   resources :users, only: %i[show]
   resource :profile, only: %i[edit update]
