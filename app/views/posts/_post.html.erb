@@ -36,6 +36,7 @@
       <%= image_tag post.image.url %>
     <!-- Like Button -->
     <% if logged_in? && !current_user.own?(post) %>
+      <%= render 'bookmarks/bookmark_area', post: post %>
       <%= render 'likes/like_area', post: post %>
     <% end %>
     <!-- Comment Input Form-->
