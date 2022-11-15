@@ -26,7 +26,7 @@
             <!--   -->
             <ul class="nav nav-bottom-line align-items-center justify-content-center mb-0 border-0">
               <li class="nav-item"> <a class="tab nav-link active" href="#"> <%= @user_posts.count%>件の投稿 </a> </li>
-              <li class="nav-item"> <a class="tab nav-link" href="#"> お気に入り </a> </li>
+              <li class="nav-item"> <a class="tab nav-link" href="#"> 保存済み </a> </li>
             </ul>        
           <% else %>
             <h6 class="text-center"><%= @user_posts.count%>件の投稿</h6>
@@ -42,7 +42,7 @@
       <% if current_user&.id == @user.id%>
         <!-- User's Favorites Posts Start -->
         <div class="tabbox">
-          <%= render partial: 'posts/post', collection: @user_like_posts, locals: { comment: @comment } %>          </div>
+          <%= render partial: 'posts/post', collection: @user_bookmark_posts, locals: { comment: @comment } %>
         </div>
       <% end %>
     </div>
