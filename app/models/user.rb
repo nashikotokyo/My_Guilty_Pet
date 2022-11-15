@@ -25,7 +25,6 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
-
   def own?(object)
     id == object.user_id
   end
@@ -53,5 +52,4 @@ class User < ApplicationRecord
   def bookmark?(post)
     bookmark_posts.include?(post)
   end
-
 end
