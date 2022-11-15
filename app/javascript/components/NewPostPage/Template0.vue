@@ -31,7 +31,7 @@
 								<span class="errmsg">{{ errors[0] }}</span>
 							</validation-provider>
 							<div class="text-end">
-								<ButtonTemplate @click="drawPetName" class="mt-1" :disabled="invalid">合成</ButtonTemplate>
+								<ButtonTemplate @click="drawPetName" class="mt-1" :disabled="invalid" id="combine-btn-1">合成</ButtonTemplate>
 							</div>
 						</div>
 					</ValidationObserver>  
@@ -44,7 +44,7 @@
 								<span class="errmsg">{{ errors[0] }}</span>
 							</validation-provider>
 							<div class="text-end">
-								<ButtonTemplate @click="drawCrimeName" class="mt-1" :disabled="invalid">合成</ButtonTemplate>
+								<ButtonTemplate @click="drawCrimeName" class="mt-1" :disabled="invalid" id="combine-btn-2">合成</ButtonTemplate>
 							</div> 
 						</div>
 					</ValidationObserver>
@@ -56,7 +56,7 @@
 								<span class="errmsg">{{ errors[0] }}</span>
 							</validation-provider>
 							<div class="text-end">
-								<ButtonTemplate @click="drawBounty" class="mt-1" :disabled="invalid">合成</ButtonTemplate>
+								<ButtonTemplate @click="drawBounty" class="mt-1" :disabled="invalid" id="combine-btn-3">合成</ButtonTemplate>
 							</div> 
 						</div>
 					</ValidationObserver>
