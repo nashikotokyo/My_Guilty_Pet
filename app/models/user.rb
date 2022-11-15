@@ -50,4 +50,8 @@ class User < ApplicationRecord
     bookmark_posts.destroy(post)
   end
 
+  def bookmark?(post)
+    bookmark_posts.include?(post)
+  end
+
 end
