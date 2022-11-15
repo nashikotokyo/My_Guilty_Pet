@@ -5,6 +5,7 @@ ja:
       post: '投稿'
       comment: 'コメント'
       like: 'いいね'
+      bookmark: 'ブックマーク'
     attributes:
       user:
         username: 'ユーザー名'
