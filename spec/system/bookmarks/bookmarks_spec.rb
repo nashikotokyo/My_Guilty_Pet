@@ -21,7 +21,6 @@ RSpec.describe 'ブックマーク', type: :system, js: true do
   end
 
   it 'ブックマークができること' do
-    visit posts_path
     expect {
       within "#post-#{post_by_others.id}" do
         find('.before-bookmark-button').click
