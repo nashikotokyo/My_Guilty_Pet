@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'コメント', type: :system do
+RSpec.describe 'コメント', type: :system, js: true do
   
   describe 'コメント投稿' do
     let!(:user) { create(:user) }
