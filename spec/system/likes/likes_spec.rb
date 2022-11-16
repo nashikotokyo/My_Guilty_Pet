@@ -27,6 +27,7 @@ RSpec.describe 'いいね', type: :system do
     expect {
       within "#post-#{post_by_others.id}" do
         find('.before-like-button').click
+        sleep 0.5
         expect(page).to have_css '.after-like-button'
       end
     }.to change{user.like_posts.count}.by(1)
@@ -38,6 +39,7 @@ RSpec.describe 'いいね', type: :system do
     expect {
       within "#post-#{post_by_others.id}" do
         find('.after-like-button').click
+        sleep 0.5
         expect(page).to have_css '.before-like-button'
       end
     }.to change {user.like_posts.count}.by(-1)

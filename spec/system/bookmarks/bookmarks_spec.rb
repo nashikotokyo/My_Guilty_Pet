@@ -27,6 +27,7 @@ RSpec.describe 'ブックマーク', type: :system do
     expect {
       within "#post-#{post_by_others.id}" do
         find('.before-bookmark-button').click
+        sleep 0.5
         expect(page).to have_css '.after-bookmark-button'
       end
     }.to change{user.bookmark_posts.count}.by(1)
@@ -38,6 +39,7 @@ RSpec.describe 'ブックマーク', type: :system do
     expect {
       within "#post-#{post_by_others.id}" do
         find('.after-bookmark-button').click
+        sleep 0.5
         expect(page).to have_css '.before-bookmark-button'
       end
     }.to change {user.bookmark_posts.count}.by(-1)

@@ -13,8 +13,9 @@ RSpec.describe 'コメント', type: :system do
       visit posts_path
       fill_in "input-comment-box-#{post.id}", with: 'コメントを入力'
       find('.comment-btn').click
+      sleep 0.5
       find("#summary-#{post.id}").click
-
+      sleep 0.5
       expect(page).to have_content 'コメントを入力'
     end
   end
@@ -49,8 +50,12 @@ RSpec.describe 'コメント', type: :system do
       visit posts_path
       find("#summary-#{post.id}").click
       within "#comment-#{comment_by_user.id}" do
-        page.accept_confirm { find('.delete-button').click }
+        page.accept_confirm { 
+          find('.delete-button').click
+          sleep 0.5
+        }
       end
+      sleep 0.5
       expect(page).not_to have_content comment_by_user.body
     end
   end
