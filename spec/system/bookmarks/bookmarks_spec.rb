@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ブックマーク', type: :system, js: true do
+RSpec.describe 'ブックマーク', type: :system do
   let!(:user) { create(:user) }
   let!(:post_by_others) { create(:post) }
   let!(:post_by_user) { create(:post, user: user) }
