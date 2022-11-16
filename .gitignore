@@ -80,5 +80,3 @@ config/environments/*.local.yml
 /config/certs/*
 
 /.env
-
-/config/badwords.json

@@ -4,11 +4,9 @@ import {
          extend,
          localize
 } from 'vee-validate';
-import { required, excluded } from 'vee-validate/dist/rules';
-import badwords from '/config/badwords.json';
+import { required } from 'vee-validate/dist/rules';
 
 extend('required', required)
-extend('excluded', excluded)
 
 import ja from "vee-validate/dist/locale/ja.json";
 localize('ja', ja);
@@ -21,7 +19,7 @@ export default {
 };
 
 let badWords = [];
-badWords = badwords.data;
+badWords = process.env.BAD_WORDS.split(',')
 
 extend('badWords', {
   validate(value) {
