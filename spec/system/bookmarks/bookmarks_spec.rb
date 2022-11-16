@@ -9,7 +9,6 @@ RSpec.describe 'ブックマーク', type: :system, js: true do
   end
 
   it '自分の投稿にブックマークボタンが表示されないこと' do
-    end
     within "#post-#{post_by_user.id}" do
       expect(page).not_to have_css '.before-bookmark-button'
     end
