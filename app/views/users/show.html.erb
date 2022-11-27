@@ -1,5 +1,5 @@
 <% if @post_for_ogp %>
-  <% set_meta_tags og: {image: (request.base_url)+(@post_for_ogp.image.url)} %>
+  <% set_meta_tags og: {image: @post_for_ogp.image.url} %>
 <% end %>
 <% content_for(:title, t('.title')) %>
 <!-- Container START -->
