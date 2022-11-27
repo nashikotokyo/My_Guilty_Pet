@@ -16942,5 +16942,9 @@ html[data-theme=dark] .light-mode-item {
   color: var(--bs-red)
 }
 
+.darkmode-bg-color{
+  background-color: #191a1f;
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style-dark.css.map */
