@@ -7,6 +7,7 @@
     <div class="col-sm-10 col-md-8 col-lg-7">
       <!-- Post Partial START -->
       <%= render @posts, comment: @comment %>
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
     <!-- Main content END -->
   </div>
