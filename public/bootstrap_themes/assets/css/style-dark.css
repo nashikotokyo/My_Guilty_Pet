@@ -16946,5 +16946,9 @@ html[data-theme=dark] .light-mode-item {
   background-color: #191a1f;
 }
 
+.pagination {
+  justify-content: center;
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style-dark.css.map */
