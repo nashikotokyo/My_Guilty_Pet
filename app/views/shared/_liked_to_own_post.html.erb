@@ -1,9 +1,9 @@
-<li class="dropdown-item">
+<li class="dropdown-item text-wrap">
   <%= link_to activity.subject.user.username, user_path(activity.subject.user) %>
     があなたの
   <%= link_to '投稿', posts_path(anchor: "post-#{activity.subject.post.id}") %>
     にいいねしました
-  <div class="ml-auto">
+  <div class="me-auto">
     <%= l activity.created_at, format: :short %>
   </div>
 </li>
