@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_15_024217) do
+ActiveRecord::Schema.define(version: 2022_12_13_011337) do
+
+  create_table "activities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "subject_type", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "action_type", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_type", "subject_id"], name: "index_activities_on_subject"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -68,6 +80,7 @@ ActiveRecord::Schema.define(version: 2022_11_15_024217) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
