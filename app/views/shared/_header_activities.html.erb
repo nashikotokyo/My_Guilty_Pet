@@ -1,0 +1,9 @@
+<% if current_user.activities.present? %>
+  <% current_user.activities.each do |activity| %>
+    <%= render "shared/#{activity.action_type}", activity: activity %>
+  <% end %>
+<% else %>
+  <div class="dropdown-item">
+    お知らせはありません
+  </div>
+<% end %>

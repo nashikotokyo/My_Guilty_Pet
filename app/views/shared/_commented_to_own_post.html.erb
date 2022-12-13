@@ -1,0 +1,12 @@
+<li class="dropdown-item">
+  <%= link_to activity.subject.user.username, user_path(activity.subject.user) %>
+    があなたの
+  <%= link_to '投稿', posts_path(anchor: "post-#{activity.subject.post.id}") %>
+    に
+  <%= link_to 'コメント', posts_path(anchor: "comment-#{activity.subject.id}") %>
+    しました
+  <div class="ml-auto">
+    <%= l activity.created_at, format: :short %>
+  </div>
+</li>
+<div class="dropdown-divider"></div>
