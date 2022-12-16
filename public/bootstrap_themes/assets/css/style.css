@@ -16949,5 +16949,9 @@ html[data-theme=dark] .light-mode-item {
   font-size: 12px;
 }
 
+.read {
+  background: #f1f1f1;
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style.css.map */

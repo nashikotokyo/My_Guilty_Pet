@@ -16956,5 +16956,9 @@ html[data-theme=dark] .light-mode-item {
   font-size: 12px;
 }
 
+.read {
+  background: #343a40;
+}
+
 /*User CSS*/
 /*# sourceMappingURL=style-dark.css.map */

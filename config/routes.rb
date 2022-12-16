@@ -27,6 +27,7 @@
 #                             edit_profile GET    /profile/edit(.:format)                                                                           profiles#edit
 #                                  profile PATCH  /profile(.:format)                                                                                profiles#update
 #                                          PUT    /profile(.:format)                                                                                profiles#update
+#                            read_activity PATCH  /activities/:id/read(.:format)                                                                    activities#read
 #                               activities GET    /activities(.:format)                                                                             activities#index
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
@@ -84,5 +85,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i[show]
   resource :profile, only: %i[edit update]
-  resources :activities, only: %i[index]
+  resources :activities, only: %i[index] do
+    patch :read, on: :member
+  end
 end
