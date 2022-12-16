@@ -14,8 +14,9 @@ Header START -->
       <!-- Responsive navbar toggler -->
       <div class="d-flex justify-content-end align-items-center">
         <div class="dropdown me-3">
-          <button class="btn btn-light dropdown-toggle" type="button" id="activityDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-light dropdown-toggle position-relative" type="button" id="activityDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-bell fa-lg"></i>
+            <%= render 'shared/unread_badge' %>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" id="activityDropdownMenu" aria-labelledby="activityDropdownMenuButton">
             <%= render 'shared/header_activities'%>
