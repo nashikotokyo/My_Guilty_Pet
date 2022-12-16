@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ブックマーク', type: :system do
+RSpec.describe 'ブックマーク', type: :system, js: true do
   let!(:user) { create(:user) }
   let!(:post_by_others) { create(:post) }
   let!(:post_by_user) { create(:post, user: user) }
@@ -9,21 +9,18 @@ RSpec.describe 'ブックマーク', type: :system do
   end
 
   it '自分の投稿にブックマークボタンが表示されないこと' do
-    visit posts_path
     within "#post-#{post_by_user.id}" do
       expect(page).not_to have_css '.before-bookmark-button'
     end
   end
 
   it '他人の投稿にブックマークボタンが表示されること' do
-    visit posts_path
     within "#post-#{post_by_others.id}" do
       expect(page).to have_css '.before-bookmark-button'
     end
   end
 
   it 'ブックマークができること' do
-    visit posts_path
     expect {
       within "#post-#{post_by_others.id}" do
         find('.before-bookmark-button').click

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'いいね', type: :system do
+RSpec.describe 'いいね', type: :system, js: true do
   let!(:user) { create(:user) }
   let!(:post_by_others) { create(:post) }
   let!(:post_by_user) { create(:post, user: user) }
