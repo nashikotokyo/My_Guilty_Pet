@@ -4127,10 +4127,7 @@ textarea.form-control-lg {
   background-color: transparent;
   border: 0;
 }
-.dropdown-item:hover, .dropdown-item:focus {
-  color: #0f6fec;
-  background-color: transparent;
-}
+
 .dropdown-item.active, .dropdown-item:active {
   color: #0f6fec;
   text-decoration: none;
@@ -16944,6 +16941,23 @@ html[data-theme=dark] .light-mode-item {
 
 .darkmode-bg-color{
   background-color: #191a1f;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.dropdown-toggle::after {
+  display:none;
+}
+
+#activityDropdownMenu {
+  width: 260px;
+  font-size: 12px;
+}
+
+.read {
+  background: #343a40;
 }
 
 /*User CSS*/

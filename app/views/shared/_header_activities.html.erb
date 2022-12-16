@@ -1,0 +1,12 @@
+<% if current_user.activities.present? %>
+  <% current_user.activities.recent(10).each do |activity| %>
+    <%= render "shared/#{activity.action_type}", activity: activity %>
+  <% end %>
+  <% if current_user.activities.count > 10 %>
+    <%= link_to '全て見る', activities_path, class: 'dropdown-item d-flex justify-content-center' %>
+  <% end %>
+<% else %>
+  <div class="dropdown-item">
+    お知らせはありません
+  </div>
+<% end %>

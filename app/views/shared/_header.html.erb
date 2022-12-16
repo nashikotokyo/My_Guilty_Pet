@@ -12,40 +12,51 @@ Header START -->
       <% end %>
       <!-- App name END -->
       <!-- Responsive navbar toggler -->
-      <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-animation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
+      <div class="d-flex justify-content-end align-items-center">
+        <div class="dropdown me-3">
+          <button class="btn btn-light dropdown-toggle position-relative" type="button" id="activityDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bell fa-lg"></i>
+            <%= render 'shared/unread_badge' %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" id="activityDropdownMenu" aria-labelledby="activityDropdownMenuButton">
+            <%= render 'shared/header_activities'%>
+          </ul>
+        </div>
+        <button class="navbar-toggler icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
 
-      <!-- Main navbar START -->
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav navbar-nav-scroll me-auto text-nowrap">
-          <!-- Nav item -->
-          <li class="nav-item">
-            <%= link_to "イメージ作成", new_post_path, class: "nav-link"  %>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user), class: "nav-link"  %>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <%= link_to "ログアウト", logout_path, class: "nav-link", method: :delete %>
-          </li>
-          <!-- Dark mode switch START -->
-          <li class="nav-item">
-            <div class="modeswitch-wrap nav-link" id="darkModeSwitch">
-              <h7>ダークモード</h7>
-              <div class="modeswitch-item">
-                <div class="modeswitch-icon"></div>
+        <!-- Main navbar START -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto text-nowrap">
+            <!-- Nav item -->
+            <li class="nav-item">
+              <%= link_to "イメージ作成", new_post_path, class: "nav-link"  %>
+            </li>
+            <!-- Nav item -->
+            <li class="nav-item">
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link"  %>
+            </li>
+            <!-- Nav item -->
+            <li class="nav-item">
+              <%= link_to "ログアウト", logout_path, class: "nav-link", method: :delete %>
+            </li>
+            <!-- Dark mode switch START -->
+            <li class="nav-item">
+              <div class="modeswitch-wrap nav-link" id="darkModeSwitch">
+                <h7>ダークモード</h7>
+                <div class="modeswitch-item">
+                  <div class="modeswitch-icon"></div>
+                </div>
               </div>
-            </div>
-          </li>
-          <!-- Dark mode switch END -->
-        </ul>
+            </li>
+            <!-- Dark mode switch END -->
+          </ul>
+        </div>
       </div>
       <!-- Main navbar END -->
     </div>

@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
+  has_many :activities, dependent: :destroy
 
   def own?(object)
     id == object.user_id

@@ -1,0 +1,9 @@
+<%= link_to read_activity_path(activity), class: "dropdown-item text-wrap border-bottom #{'read' if activity.read?}", method: :patch do %>
+  <object><%= link_to activity.subject.user.username, user_path(activity.subject.user) %></object>
+    があなたの
+  <object><%= link_to '投稿', posts_path(anchor: "post-#{activity.subject.post.id}") %></object>
+    にいいねしました
+  <div class="me-auto">
+    <%= l activity.created_at, format: :short %>
+  </div>
+<% end %>
